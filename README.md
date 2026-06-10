@@ -1,29 +1,82 @@
 # Watch Later Manager for YouTube
 
-A small Chrome Manifest V3 extension for the YouTube Watch Later page.
+<p align="center">
+  <img src="icons/icon-128.png" alt="Watch Later Manager for YouTube logo" width="96" height="96">
+</p>
 
-## What it does
+Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.
 
-- Adds checkboxes to visible Watch Later videos.
-- Adds Select all and Clear controls.
-- Adds a Remove selected button.
-- Adds a Watched first button that sorts loaded rows by watch progress.
+This is a small Chrome Manifest V3 extension for people whose Watch Later list is easy to fill but hard to clean. It adds simple controls directly to the visible Watch Later page, without using YouTube APIs or storing account data.
 
-## What it does not do
+## Preview
 
-- It does not use the YouTube API.
-- It does not make private YouTube network requests.
-- It does not read or store account credentials.
+![Watch Later Manager toolbar selecting videos on the YouTube Watch Later page](assets/store/screenshot-watch-later-toolbar.png)
+
+## Features
+
+- Select visible Watch Later videos with checkboxes.
+- Select all visible rows.
+- Clear the current selection.
+- Remove selected videos in one run.
+- Sort loaded videos so watched or higher-progress videos move to the top.
+- Keep YouTube's normal page, menus, and infinite scrolling.
+
+## How It Works
+
+Open `https://www.youtube.com/playlist?list=WL`. The extension adds a small toolbar at the bottom of the page with these controls:
+
+- `Select all`
+- `Clear`
+- `Watched first`
+- `Remove selected`
+
+`Remove selected` uses YouTube's visible row menu and clicks `Remove from Watch later` for each selected row.
+
+`Watched first` reads the progress shown on the page and visually sorts only videos that are already loaded. It does not permanently reorder your playlist.
+
+## Privacy
+
+The extension runs locally in the browser.
+
+It does not:
+
+- use the YouTube API
+- make private YouTube network requests
+- read or store account credentials
+- read or store cookies or tokens
+- use analytics, ads, or external servers
+- run remote code
+
+## Limits
+
+- It only works on the YouTube Watch Later playlist page.
+- It only manages videos already loaded into the page.
 - It does not permanently reorder the playlist.
 - It does not batch Save to playlist in this version.
+- It may need updates if YouTube changes its page layout or menu wording.
 
-## Install for local testing
+## Local Testing
 
 1. Open `chrome://extensions`.
 2. Turn on Developer mode.
 3. Click Load unpacked.
-4. Choose this `youtube-watchlist-manager` folder.
+4. Choose this project folder.
 5. Open `https://www.youtube.com/playlist?list=WL`.
+6. Test Select all, Clear, Watched first, Remove selected, and infinite scroll.
+
+## Development Checks
+
+Run the local helper tests:
+
+```sh
+node tests/run-tests.js
+```
+
+Validate the manifest:
+
+```sh
+node -e "JSON.parse(require('node:fs').readFileSync('manifest.json','utf8')); console.log('manifest ok')"
+```
 
 ## Package for Chrome Web Store
 
@@ -33,16 +86,19 @@ Run:
 sh scripts/package-extension.sh
 ```
 
-Upload `dist/youtube-watchlist-manager.zip`.
+Upload:
 
-## Notes
+```text
+dist/youtube-watchlist-manager.zip
+```
 
-Batch remove uses YouTube's visible row menu and clicks "Remove from Watch later". If YouTube changes the menu text or page structure, the action may stop and show a status message.
+The upload ZIP contains only runtime files: `manifest.json`, `src/`, and `icons/`.
 
-Watched first sorts only videos already loaded in the page. It reads YouTube's visible progress bar, places higher progress first, and puts rows with no visible progress at the bottom. If a row says `WATCHED` but has no visible progress bar, it is treated as fully watched.
+## Store Assets
 
-The sort uses CSS visual order and does not move YouTube's internal DOM nodes. Scroll more videos into view before sorting if you want more rows included.
+- Screenshot: `assets/store/screenshot-watch-later-toolbar.png`
+- Small promotional image: `assets/store/promo-small.png`
 
-Version `0.1.3` avoids changing YouTube's list container layout. This keeps YouTube's normal infinite scroll loader available after sorting and removing selected rows.
+## Trademark
 
-YouTube is a trademark of Google LLC. This extension is not made by or endorsed by Google or YouTube.
+YouTube is a trademark of Google LLC. This extension is not made by, endorsed by, or sponsored by Google or YouTube.
