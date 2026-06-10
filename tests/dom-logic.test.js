@@ -6,7 +6,8 @@ const {
   buildWatchedSortGroups,
   buildWatchedVisualOrderPlan,
   buildTransformSortPlan,
-  parseProgressPercent
+  parseProgressPercent,
+  scrollPageToTop
 } = require('../src/content.js');
 
 test('isWatchLaterUrl only accepts YouTube Watch Later playlist URLs', () => {
@@ -95,4 +96,24 @@ test('buildTransformSortPlan computes visual moves without reordering input rows
 
   assert.deepEqual(plan.map((item) => item.row.id), ['forty', 'none', 'ninety-five']);
   assert.deepEqual(plan.map((item) => item.translateY), [100, 100, -200]);
+});
+
+test('scrollPageToTop jumps the page to the top-left corner', () => {
+  const calls = [];
+  const fakeWindow = {
+    document: {
+      body: { scrollTop: 456 },
+      documentElement: { scrollTop: 123 }
+    },
+    scrollTo(left, top) {
+      calls.push([left, top]);
+    }
+  };
+
+  assert.equal(typeof scrollPageToTop, 'function');
+  scrollPageToTop(fakeWindow);
+
+  assert.deepEqual(calls, [[0, 0]]);
+  assert.equal(fakeWindow.document.documentElement.scrollTop, 0);
+  assert.equal(fakeWindow.document.body.scrollTop, 0);
 });

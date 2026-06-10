@@ -85,13 +85,31 @@
     }));
   }
 
+  function scrollPageToTop(targetWindow) {
+    const documentElement = targetWindow?.document?.documentElement;
+    const body = targetWindow?.document?.body;
+
+    if (targetWindow && typeof targetWindow.scrollTo === 'function') {
+      targetWindow.scrollTo(0, 0);
+    }
+
+    if (documentElement) {
+      documentElement.scrollTop = 0;
+    }
+
+    if (body) {
+      body.scrollTop = 0;
+    }
+  }
+
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
       isWatchLaterUrl,
       buildWatchedSortGroups,
       buildWatchedVisualOrderPlan,
       buildTransformSortPlan,
-      parseProgressPercent
+      parseProgressPercent,
+      scrollPageToTop
     };
   }
 
@@ -317,6 +335,7 @@
     });
 
     setStatus(`${progressCount || watchedCount} rows sorted by progress`);
+    scrollPageToTop(globalObject);
     updateToolbarState();
   }
 
