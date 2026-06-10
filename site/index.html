@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Watch Later Manager for YouTube</title>
+    <meta name="description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
+    <meta property="og:title" content="Watch Later Manager for YouTube">
+    <meta property="og:description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/promo-small.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Watch Later Manager for YouTube">
+    <meta name="twitter:description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
+    <meta name="twitter:image" content="assets/promo-small.png">
+    <link rel="icon" href="assets/icon-128.png">
+    <link rel="preconnect" href="https://cdn.jsdelivr.net">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" aria-label="Site header">
+      <a class="brand" href="index.html" aria-label="Watch Later Manager for YouTube home">
+        <img src="assets/brand-mark.png" alt="" width="40" height="40">
+        <span>
+          <strong>Watch Later Manager</strong>
+          <small>for YouTube</small>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Primary navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#privacy">Privacy</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="header-cta" href="#" data-store-link data-fallback-href="#">Install Extension</a>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-copy">
+          <h1 id="hero-title">Watch Later Manager for YouTube</h1>
+          <p class="hero-highlight">Clean up Watch Later faster</p>
+          <p class="hero-tagline">Select. Sort. Remove.<br><span>Privacy-first by design.</span></p>
+          <p class="hero-body">Take control of your Watch Later playlist. Select visible videos, sort watched or higher-progress loaded videos to the top, then remove selected videos in bulk.</p>
+          <div class="hero-actions" aria-label="Primary actions">
+            <a class="button button-primary" href="#" data-store-link data-fallback-href="#"><i class="ri-download-line" aria-hidden="true"></i> Add to Chrome</a>
+            <a class="button button-secondary" href="privacy.html">Privacy Policy</a>
+          </div>
+          <p class="trust-note"><i class="ri-shield-check-line" aria-hidden="true"></i> Works on your Watch Later playlist. No sign-in required. No data leaves your browser.</p>
+        </div>
+
+        <div class="demo-panel" aria-label="Interactive Watch Later cleanup demo">
+          <div class="demo-topbar">
+            <div>
+              <strong>Watch Later</strong>
+              <span>(125)</span>
+            </div>
+          </div>
+
+          <div class="demo-list" data-demo-list>
+            <article class="demo-row is-selected">
+              <label class="row-check"><input type="checkbox" checked aria-label="Select Aircraft Carrier Crews"></label>
+              <img src="assets/thumbs/thumb-1.png" alt="">
+              <div class="row-text">
+                <h3>How Aircraft Carrier Crews EAT, SHOWER &amp; SLEEP</h3>
+                <p>The Daily Navy · 11M views · 2 months ago</p>
+              </div>
+              <span class="duration">19:51</span>
+              <i class="ri-more-2-fill" aria-hidden="true"></i>
+            </article>
+            <article class="demo-row is-selected">
+              <label class="row-check"><input type="checkbox" checked aria-label="Select Hidden Under Antarctica"></label>
+              <img src="assets/thumbs/thumb-2.png" alt="">
+              <div class="row-text">
+                <h3>What's Hidden Under Antarctica?</h3>
+                <p>Cleo Abram · 6.4M views · 1 month ago</p>
+              </div>
+              <span class="duration">18:49</span>
+              <i class="ri-more-2-fill" aria-hidden="true"></i>
+            </article>
+            <article class="demo-row is-selected">
+              <label class="row-check"><input type="checkbox" checked aria-label="Select Living in the Faroe Islands"></label>
+              <img src="assets/thumbs/thumb-3.png" alt="">
+              <div class="row-text">
+                <h3>Living in the Faroe Islands | How People Live at the End of the World</h3>
+                <p>Planet Journal · 2.6M views · 4 weeks ago</p>
+              </div>
+              <span class="duration">37:02</span>
+              <i class="ri-more-2-fill" aria-hidden="true"></i>
+            </article>
+            <article class="demo-row">
+              <label class="row-check"><input type="checkbox" aria-label="Select Why Super Glue Is Perfect For Gluing Skin"></label>
+              <img src="assets/thumbs/thumb-4.png" alt="">
+              <div class="row-text">
+                <h3>Why Super Glue Is Perfect For Gluing Skin</h3>
+                <p>Veritasium · 16M views · 1 year ago</p>
+              </div>
+              <span class="duration">26:20</span>
+              <i class="ri-more-2-fill" aria-hidden="true"></i>
+            </article>
+            <article class="demo-row">
+              <label class="row-check"><input type="checkbox" aria-label="Select Ridiculous Engineering of Jet Engines"></label>
+              <img src="assets/thumbs/thumb-5.png" alt="">
+              <div class="row-text">
+                <h3>The Ridiculous Engineering of Jet Engines</h3>
+                <p>Veritasium · 13M views · 6 months ago</p>
+              </div>
+              <span class="duration">39:34</span>
+              <i class="ri-more-2-fill" aria-hidden="true"></i>
+            </article>
+          </div>
+
+          <div class="demo-footer">
+            <span><strong data-demo-count>3</strong> selected</span>
+            <div>
+              <button type="button" class="demo-small" data-demo-select>Select all</button>
+              <button type="button" class="demo-small" data-demo-clear>Clear</button>
+              <button type="button" class="demo-danger" data-demo-remove><span>Remove selected (<span data-demo-count>3</span>)</span></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="features" class="pain-section" aria-labelledby="features-title">
+        <div class="section-inner">
+          <h2 id="features-title">Your Watch Later playlist deserves better</h2>
+          <div class="pain-grid">
+            <article>
+              <i class="ri-list-check-3" aria-hidden="true"></i>
+              <h3>Too much noise</h3>
+              <p>Select visible Watch Later videos with checkboxes instead of opening each item.</p>
+            </article>
+            <article>
+              <i class="ri-time-line" aria-hidden="true"></i>
+              <h3>Hard to find</h3>
+              <p>Sort loaded videos so watched or higher-progress videos move to the top.</p>
+            </article>
+            <article>
+              <i class="ri-delete-bin-line" aria-hidden="true"></i>
+              <h3>Slow to clean</h3>
+              <p>Removing one by one takes forever. Bulk actions should be simple.</p>
+            </article>
+            <article>
+              <i class="ri-eye-off-line" aria-hidden="true"></i>
+              <h3>Privacy concerns</h3>
+              <p>Your data should stay on your device, not on someone else's servers.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="how-it-works" class="workflow" aria-labelledby="workflow-title">
+        <div class="section-inner">
+          <h2 id="workflow-title">How it works</h2>
+          <div class="workflow-grid">
+            <article>
+              <span class="step-number">1</span>
+              <span class="step-icon"><i class="ri-play-list-2-line" aria-hidden="true"></i></span>
+              <h3>Open Watch Later</h3>
+              <p>Go to your Watch Later playlist on YouTube.</p>
+            </article>
+            <article>
+              <span class="step-number">2</span>
+              <span class="step-icon"><i class="ri-list-check-3" aria-hidden="true"></i></span>
+              <h3>Select &amp; sort</h3>
+              <p>Bring watched or higher-progress loaded videos to the top.</p>
+            </article>
+            <article>
+              <span class="step-number">3</span>
+              <span class="step-icon"><i class="ri-checkbox-line" aria-hidden="true"></i></span>
+              <h3>Pick what to remove</h3>
+              <p>Select multiple videos at once.</p>
+            </article>
+            <article>
+              <span class="step-number">4</span>
+              <span class="step-icon danger"><i class="ri-delete-bin-line" aria-hidden="true"></i></span>
+              <h3>Remove in bulk</h3>
+              <p>Clean up your playlist in one click.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="privacy" class="privacy-callout" aria-labelledby="privacy-title">
+        <div class="section-inner privacy-panel">
+          <div class="lock-icon"><i class="ri-lock-line" aria-hidden="true"></i></div>
+          <div>
+            <h2 id="privacy-title">Privacy-first by design</h2>
+            <p>This extension works entirely in your browser. We don't collect, store, or share any of your data. Your Watch Later playlist stays private.</p>
+          </div>
+          <ul>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No data sent out</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No tracking</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No external servers</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No sign-in required</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No analytics</li>
+            <li><i class="ri-check-line" aria-hidden="true"></i>No ads</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="faq" class="faq" aria-labelledby="faq-title">
+        <div class="section-inner faq-grid">
+          <h2 id="faq-title">FAQ</h2>
+          <div>
+            <details>
+              <summary>Does it use the YouTube API?</summary>
+              <p>No. It works with the visible Watch Later page in your browser.</p>
+            </details>
+            <details>
+              <summary>Does it permanently reorder my playlist?</summary>
+              <p>No. Watched-first sorting is a visual sort for loaded rows only.</p>
+            </details>
+            <details>
+              <summary>Does my data leave the browser?</summary>
+              <p>No. There are no analytics, ads, external servers, cookies, tokens, or account credentials.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="section-inner footer-grid">
+        <div class="footer-brand">
+          <img src="assets/brand-mark.png" alt="" width="40" height="40">
+          <div>
+            <strong>Watch Later Manager</strong>
+            <span>for YouTube</span>
+            <p>Clean up Watch Later faster.</p>
+          </div>
+        </div>
+        <nav aria-label="Footer links">
+          <strong>Links</strong>
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How it works</a>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <nav aria-label="Support links">
+          <strong>Support</strong>
+          <a href="privacy.html">Privacy details</a>
+        </nav>
+      </div>
+      <p class="disclaimer">This extension is not affiliated with any video platform. YouTube is a trademark of Google LLC.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

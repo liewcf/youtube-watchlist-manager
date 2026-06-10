@@ -99,6 +99,14 @@ The upload ZIP contains only runtime files: `manifest.json`, `src/`, and `icons/
 - Screenshot: `assets/store/screenshot-watch-later-toolbar.png`
 - Small promotional image: `assets/store/promo-small.png`
 
+## GitHub Pages Site
+
+The static landing page and privacy policy live in `site/`.
+
+GitHub Pages deploys through `.github/workflows/pages.yml`. Set the repository Pages source to GitHub Actions.
+
+After Chrome Web Store publish, paste the extension listing URL into `chromeWebStoreUrl` in `site/script.js`. The main install buttons will then link to the Store listing.
+
 ## Trademark
 
 YouTube is a trademark of Google LLC. This extension is not made by, endorsed by, or sponsored by Google or YouTube.
