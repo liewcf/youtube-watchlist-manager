@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Watch Later Manager for YouTube\u2122",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.",
   "icons": {
     "16": "icons/icon-16.png",
@@ -12,8 +12,8 @@
   "content_scripts": [
     {
       "matches": [
-        "https://www.youtube.com/playlist*",
-        "https://youtube.com/playlist*"
+        "https://www.youtube.com/*",
+        "https://youtube.com/*"
       ],
       "js": [
         "src/content.js"

@@ -1,5 +1,6 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const manifest = require('../manifest.json');
 
 const {
   isWatchLaterUrl,
@@ -15,6 +16,13 @@ test('isWatchLaterUrl only accepts YouTube Watch Later playlist URLs', () => {
   assert.equal(isWatchLaterUrl('https://youtube.com/playlist?list=WL&index=10'), true);
   assert.equal(isWatchLaterUrl('https://www.youtube.com/playlist?list=LL'), false);
   assert.equal(isWatchLaterUrl('https://www.youtube.com/watch?v=abc123'), false);
+});
+
+test('manifest injects on YouTube pages so SPA navigation can show the toolbar', () => {
+  const [contentScript] = manifest.content_scripts;
+
+  assert.ok(contentScript.matches.includes('https://www.youtube.com/*'));
+  assert.ok(contentScript.matches.includes('https://youtube.com/*'));
 });
 
 test('buildWatchedSortGroups separates watched rows before unwatched rows', () => {
