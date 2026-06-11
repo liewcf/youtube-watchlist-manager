@@ -28,9 +28,9 @@ Open `https://www.youtube.com/playlist?list=WL`. The extension adds a small tool
 - `Select all`
 - `Clear`
 - `Watched first`
-- `Remove selected`
+- `Remove`
 
-`Remove selected` uses YouTube's visible row menu and clicks `Remove from Watch later` for each selected row.
+`Remove` uses YouTube's visible row menu and clicks `Remove from Watch later` for each selected row.
 
 `Watched first` reads the progress shown on the page and visually sorts only videos that are already loaded. It does not permanently reorder your playlist.
 
@@ -62,7 +62,7 @@ It does not:
 3. Click Load unpacked.
 4. Choose this project folder.
 5. Open `https://www.youtube.com/playlist?list=WL`.
-6. Test Select all, Clear, Watched first, Remove selected, and infinite scroll.
+6. Test Select all, Clear, Watched first, Remove, and infinite scroll.
 
 ## Development Checks
 

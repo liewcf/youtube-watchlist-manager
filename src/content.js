@@ -219,7 +219,7 @@
     const selectAll = createButton('Select all', 'select-all');
     const clear = createButton('Clear', 'clear');
     const sortWatched = createButton('Watched first', 'sort-watched');
-    const remove = createButton('Remove selected', 'remove', 'ytwm-button-danger');
+    const remove = createButton('Remove', 'remove', 'ytwm-button-danger');
     const status = document.createElement('span');
     status.id = 'ytwm-status';
     status.className = 'ytwm-status';

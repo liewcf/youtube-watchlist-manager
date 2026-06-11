@@ -1,5 +1,7 @@
 const test = require('node:test');
 const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
 const manifest = require('../manifest.json');
 
 const {
@@ -23,6 +25,20 @@ test('manifest injects on YouTube pages so SPA navigation can show the toolbar',
 
   assert.ok(contentScript.matches.includes('https://www.youtube.com/*'));
   assert.ok(contentScript.matches.includes('https://youtube.com/*'));
+});
+
+test('toolbar remove button uses concise copy beside the selected count', () => {
+  const source = fs.readFileSync(path.join(__dirname, '../src/content.js'), 'utf8');
+
+  assert.match(source, /createButton\('Remove', 'remove', 'ytwm-button-danger'\)/);
+  assert.doesNotMatch(source, /createButton\('Remove selected', 'remove', 'ytwm-button-danger'\)/);
+});
+
+test('toolbar status text does not reserve extra end space', () => {
+  const styles = fs.readFileSync(path.join(__dirname, '../src/content.css'), 'utf8');
+
+  assert.doesNotMatch(styles, /\.ytwm-status\s*\{[^}]*min-width:\s*120px/i);
+  assert.match(styles, /\.ytwm-status\s*\{[^}]*white-space:\s*nowrap/i);
 });
 
 test('buildWatchedSortGroups separates watched rows before unwatched rows', () => {

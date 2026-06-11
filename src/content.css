@@ -54,8 +54,8 @@
 }
 
 .ytwm-status {
-  min-width: 120px;
   color: #cfcfcf;
+  white-space: nowrap;
 }
 
 .ytwm-picker {
