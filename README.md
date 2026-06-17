@@ -105,6 +105,11 @@ The static landing page and privacy policy live in `site/`.
 
 GitHub Pages deploys through `.github/workflows/pages.yml`. Set the repository Pages source to GitHub Actions.
 
+Public site:
+
+- Landing page: `https://liewcf.github.io/youtube-watchlist-manager/`
+- Privacy policy: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`
+
 After Chrome Web Store publish, paste the extension listing URL into `chromeWebStoreUrl` in `site/script.js`. The main install buttons will then link to the Store listing.
 
 ## Trademark

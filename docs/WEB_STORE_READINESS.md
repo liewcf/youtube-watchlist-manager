@@ -83,7 +83,11 @@ YouTube is a trademark of Google LLC. Use of this trademark is subject to Google
 
 Chrome Web Store privacy disclosures should match this policy. If the dashboard asks for user data categories handled by the extension, disclose website content because the content script processes visible Watch Later page content locally.
 
-Use the public GitHub Pages `site/privacy.html` URL in the Chrome Web Store Developer Dashboard.
+Use this public privacy policy URL in the Chrome Web Store Developer Dashboard:
+
+```text
+https://liewcf.github.io/youtube-watchlist-manager/privacy.html
+```
 
 ## Reviewer Notes Draft
 

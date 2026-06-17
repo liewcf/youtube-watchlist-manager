@@ -27,6 +27,9 @@ related:
 - Repaired `.gitignore` so top-level `docs/*.md` project memory and publish-readiness docs can be tracked while copied `docs/superpowers/` files stay ignored by default.
 - Committed the project-memory repair as `e55854c`.
 - Tried to proceed to GitHub publishing, but `gh auth status` reported the active `liewcf` token is invalid; the attempted web login was stopped after it hung before showing a device code.
+- After GitHub CLI auth was restored, created the public GitHub repo at `https://github.com/liewcf/youtube-watchlist-manager` and pushed `main`.
+- Enabled GitHub Pages in workflow mode, reran the Pages workflow, and confirmed deployment passed.
+- Verified the public landing page and privacy policy returned HTTP 200 at `https://liewcf.github.io/youtube-watchlist-manager/` and `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
 
 ## 2026-06-11
 

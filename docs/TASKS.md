@@ -22,12 +22,12 @@ related:
 
 ## Recommended Next Action
 
-- Re-authenticate GitHub CLI with `gh auth login -h github.com`, push the repository to GitHub, enable Pages with GitHub Actions, then use the public `site/privacy.html` URL in the Chrome Web Store listing.
+- Use `docs/WEB_STORE_READINESS.md` to fill the Chrome Web Store listing and upload `dist/youtube-watchlist-manager.zip`.
 
 ## Current
 
 - [ ] Confirm `Remove` on one disposable selected item and infinite scroll after removal if not already confirmed in manual retest.
-- [ ] Publish the GitHub Pages site and add the public `site/privacy.html` URL in the Developer Dashboard.
+- [ ] Add `https://liewcf.github.io/youtube-watchlist-manager/privacy.html` in the Chrome Web Store Developer Dashboard.
 - [ ] After Chrome Web Store publish, paste the listing URL into `chromeWebStoreUrl` in `site/script.js`.
 - [ ] Use `docs/WEB_STORE_READINESS.md` to fill Store listing, privacy, and reviewer test instruction fields.
 
@@ -66,10 +66,14 @@ related:
 - Top-level `docs/*.md` files were made trackable in git on 2026-06-17 while `docs/superpowers/` remains ignored by default.
 - Local project-memory repair was committed on 2026-06-17 as `e55854c`.
 - `gh auth status` on 2026-06-17 reported the active `liewcf` GitHub token is invalid, blocking repo creation and push.
+- GitHub CLI auth was restored on 2026-06-17.
+- Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
+- GitHub Pages was enabled with GitHub Actions on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/`.
+- Public privacy policy URL returned HTTP 200 on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
 
 ## Blockers
 
-- GitHub CLI auth is invalid for `liewcf`; run `gh auth login -h github.com` before creating/pushing the GitHub repo.
+- None recorded.
 
 ## Done
 
@@ -87,3 +91,5 @@ related:
 - [x] Capture Chrome Web Store screenshot from the real Watch Later page.
 - [x] Initialize local git repository.
 - [x] Repair project memory metadata and docs tracking rules.
+- [x] Push repository to GitHub.
+- [x] Enable GitHub Pages with GitHub Actions.

@@ -23,6 +23,7 @@ related:
 ## 2026-06-17
 
 - Keep top-level `docs/*.md` files trackable in git while leaving copied `docs/superpowers/` files ignored by default. Rationale: project memory, readiness, privacy, and migration docs are useful durable project context; copied Superpowers specs/plans are local historical support unless explicitly needed.
+- Use a public GitHub repository and GitHub Pages site at `liewcf/youtube-watchlist-manager`. Rationale: Chrome Web Store needs a public privacy policy URL, and the repository already includes a static `site/` folder plus Pages workflow.
 
 ## 2026-06-11
 
