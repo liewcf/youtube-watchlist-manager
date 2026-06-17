@@ -23,6 +23,12 @@ related:
 
 ## 2026-06-17
 
+- Changed the `Watched first` toolbar action into a toggle that switches to `Normal order`, clears the visual sort on the second click, and exposes `aria-pressed` while active.
+- Added active button styling for the watched-first mode.
+- Added a helper regression test for the `Watched first` / `Normal order` label.
+- Refreshed `dist/youtube-watchlist-manager.zip` after the toolbar toggle update.
+- Verified `node tests/run-tests.js` and manifest JSON parsing after the toolbar toggle update.
+- User manually confirmed the reloaded extension works with the `Watched first` / `Normal order` toggle on YouTube Watch Later.
 - Repaired project memory metadata by adding Project Memory Metadata v1 frontmatter to the four main memory files.
 - Repaired `.gitignore` so top-level `docs/*.md` project memory and publish-readiness docs can be tracked while copied `docs/superpowers/` files stay ignored by default.
 - Committed the project-memory repair as `e55854c`.

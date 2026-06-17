@@ -37,6 +37,16 @@
   background: #3f3f3f;
 }
 
+.ytwm-button-active {
+  color: #fff;
+  background: #065fd4;
+  border-color: #3ea6ff;
+}
+
+.ytwm-button-active:hover {
+  background: #0b66d8;
+}
+
 .ytwm-button:disabled {
   color: #888;
   cursor: default;

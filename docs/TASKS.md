@@ -70,6 +70,10 @@ related:
 - Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
 - GitHub Pages was enabled with GitHub Actions on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/`.
 - Public privacy policy URL returned HTTP 200 on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
+- Local `node tests/run-tests.js` passed on 2026-06-17 after the `Watched first` toggle update: 13 tests, 13 pass, 0 fail.
+- Local manifest parse check passed on 2026-06-17 after the `Watched first` toggle update.
+- `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-17 after the `Watched first` toggle update.
+- User manually confirmed on 2026-06-17 that the reloaded extension works with the `Watched first` / `Normal order` toggle on YouTube Watch Later.
 
 ## Blockers
 
@@ -88,6 +92,7 @@ related:
 - [x] Re-generate extension and site logo/icon assets from the transparent logo source.
 - [x] Add Chrome Web Store readiness notes, privacy policy draft, and repeatable package script.
 - [x] Load unpacked extension and retest visible Watch Later UI in Chrome.
+- [x] Confirm `Watched first` changes to `Normal order`, then restores normal visible order on the second click.
 - [x] Capture Chrome Web Store screenshot from the real Watch Later page.
 - [x] Initialize local git repository.
 - [x] Repair project memory metadata and docs tracking rules.

@@ -10,7 +10,8 @@ const {
   buildWatchedVisualOrderPlan,
   buildTransformSortPlan,
   parseProgressPercent,
-  scrollPageToTop
+  scrollPageToTop,
+  getSortWatchedButtonLabel
 } = require('../src/content.js');
 
 test('isWatchLaterUrl only accepts YouTube Watch Later playlist URLs', () => {
@@ -39,6 +40,11 @@ test('toolbar status text does not reserve extra end space', () => {
 
   assert.doesNotMatch(styles, /\.ytwm-status\s*\{[^}]*min-width:\s*120px/i);
   assert.match(styles, /\.ytwm-status\s*\{[^}]*white-space:\s*nowrap/i);
+});
+
+test('sort watched button label changes to normal order when active', () => {
+  assert.equal(getSortWatchedButtonLabel(false), 'Watched first');
+  assert.equal(getSortWatchedButtonLabel(true), 'Normal order');
 });
 
 test('buildWatchedSortGroups separates watched rows before unwatched rows', () => {

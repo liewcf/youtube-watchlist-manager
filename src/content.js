@@ -9,6 +9,10 @@
   const VIDEO_ROW_SELECTOR = 'ytd-playlist-video-renderer';
   const MENU_TEXT_REMOVE = 'Remove from Watch later';
 
+  function getSortWatchedButtonLabel(isActive) {
+    return isActive ? 'Normal order' : 'Watched first';
+  }
+
   function isWatchLaterUrl(urlValue) {
     try {
       const url = new URL(urlValue);
@@ -109,7 +113,8 @@
       buildWatchedVisualOrderPlan,
       buildTransformSortPlan,
       parseProgressPercent,
-      scrollPageToTop
+      scrollPageToTop,
+      getSortWatchedButtonLabel
     };
   }
 
@@ -120,6 +125,7 @@
   const { document, MutationObserver } = globalObject;
   let scheduled = false;
   let busy = false;
+  let visualSortActive = false;
 
   function getCurrentRows() {
     return Array.from(document.querySelectorAll(VIDEO_ROW_SELECTOR))
@@ -196,7 +202,17 @@
     toolbar.querySelector('[data-ytwm-action="remove"]').disabled = selectedCount === 0 || busy;
     toolbar.querySelector('[data-ytwm-action="select-all"]').disabled = allRows.length === 0 || busy;
     toolbar.querySelector('[data-ytwm-action="sort-watched"]').disabled = allRows.length === 0 || busy;
+    updateSortWatchedButton(toolbar);
     setStatus(busy ? 'Working...' : countText);
+  }
+
+  function updateSortWatchedButton(toolbar = document.getElementById(TOOLBAR_ID)) {
+    const button = toolbar?.querySelector('[data-ytwm-action="sort-watched"]');
+    if (!button) return;
+
+    button.textContent = getSortWatchedButtonLabel(visualSortActive);
+    button.setAttribute('aria-pressed', String(visualSortActive));
+    button.classList.toggle('ytwm-button-active', visualSortActive);
   }
 
   function createButton(label, action, extraClass) {
@@ -218,7 +234,7 @@
 
     const selectAll = createButton('Select all', 'select-all');
     const clear = createButton('Clear', 'clear');
-    const sortWatched = createButton('Watched first', 'sort-watched');
+    const sortWatched = createButton(getSortWatchedButtonLabel(false), 'sort-watched');
     const remove = createButton('Remove', 'remove', 'ytwm-button-danger');
     const status = document.createElement('span');
     status.id = 'ytwm-status';
@@ -230,8 +246,9 @@
 
     selectAll.addEventListener('click', selectAllRows);
     clear.addEventListener('click', clearSelection);
-    sortWatched.addEventListener('click', sortWatchedRowsFirst);
+    sortWatched.addEventListener('click', toggleWatchedSort);
     remove.addEventListener('click', removeSelectedRows);
+    updateSortWatchedButton(toolbar);
 
     return toolbar;
   }
@@ -260,6 +277,7 @@
 
   function enhancePage() {
     if (!isWatchLaterUrl(globalObject.location.href)) {
+      visualSortActive = false;
       document.getElementById(TOOLBAR_ID)?.remove();
       return;
     }
@@ -293,6 +311,17 @@
       if (checkbox) checkbox.checked = false;
     });
     updateToolbarState();
+  }
+
+  function toggleWatchedSort() {
+    if (visualSortActive) {
+      clearVisualSort();
+      visualSortActive = false;
+      updateToolbarState();
+      return;
+    }
+
+    sortWatchedRowsFirst();
   }
 
   function sortWatchedRowsFirst() {
@@ -335,6 +364,7 @@
     });
 
     setStatus(`${progressCount || watchedCount} rows sorted by progress`);
+    visualSortActive = true;
     scrollPageToTop(globalObject);
     updateToolbarState();
   }
