@@ -22,7 +22,7 @@ related:
 
 ## Recommended Next Action
 
-- Push the repository to GitHub, enable Pages with GitHub Actions, then use the public `site/privacy.html` URL in the Chrome Web Store listing.
+- Re-authenticate GitHub CLI with `gh auth login -h github.com`, push the repository to GitHub, enable Pages with GitHub Actions, then use the public `site/privacy.html` URL in the Chrome Web Store listing.
 
 ## Current
 
@@ -64,10 +64,12 @@ related:
 - Logo/icon PNGs were re-generated from `assets/logo-variants/progress-sort-ring-transparent.png` on 2026-06-11 and verified with alpha channels.
 - Project memory metadata was repaired on 2026-06-17.
 - Top-level `docs/*.md` files were made trackable in git on 2026-06-17 while `docs/superpowers/` remains ignored by default.
+- Local project-memory repair was committed on 2026-06-17 as `e55854c`.
+- `gh auth status` on 2026-06-17 reported the active `liewcf` GitHub token is invalid, blocking repo creation and push.
 
 ## Blockers
 
-- None recorded.
+- GitHub CLI auth is invalid for `liewcf`; run `gh auth login -h github.com` before creating/pushing the GitHub repo.
 
 ## Done
 
