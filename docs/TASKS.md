@@ -33,40 +33,7 @@ related:
 
 ## Verification
 
-- Confirmed the project folder was empty before setup.
-- Confirmed the folder was not a git repository at setup time.
-- Initialized a local git repository on 2026-06-11.
-- Local `node tests/run-tests.js` passed on 2026-06-11: 8 tests, 8 pass, 0 fail.
-- Local `node tests/run-tests.js` passed on 2026-06-11 after the SPA navigation injection fix: 10 tests, 10 pass, 0 fail.
-- Local `node tests/run-tests.js` passed on 2026-06-11 after the Remove button copy update: 11 tests, 11 pass, 0 fail.
-- Local `node tests/run-tests.js` passed on 2026-06-11 after the toolbar end-spacing update: 12 tests, 12 pass, 0 fail.
-- Local manifest parse check passed on 2026-06-11.
-- `dist/youtube-watchlist-manager.zip` listing was verified on 2026-06-11 and contains 9 files.
 - Current manifest version is `0.1.4`.
-- Generated logo variants were visually inspected and saved under `assets/logo-variants/` on 2026-06-11.
-- `progress-sort-ring-transparent.png` was exported to `icons/icon-16.png`, `icons/icon-32.png`, `icons/icon-48.png`, and `icons/icon-128.png` on 2026-06-11.
-- Chrome Web Store audit on 2026-06-11 found no runtime `fetch`, `chrome.*`, storage, cookies, tokens, eval, or private YouTube API strings.
-- Manifest content-script matches were broadened to YouTube pages on 2026-06-11 so Watch Later SPA navigation works without refresh.
-- `dist/youtube-watchlist-manager.zip` was rebuilt on 2026-06-11 with `manifest.json` at the ZIP root and only runtime files.
-- Chrome Web Store listing, privacy, and reviewer notes drafts were added on 2026-06-11.
-- User supplied a cleaner real Watch Later screenshot on 2026-06-11.
-- Store screenshot `assets/store/screenshot-watch-later-toolbar.png` was created at `1280x800`.
-- Store small promotional image `assets/store/promo-small.png` was generated and resized to `440x280`.
-- GitHub Pages landing page and privacy page were rebuilt from the selected Product Design reference on 2026-06-11.
-- Browser QA passed on 2026-06-11 for the landing page and privacy page at desktop, mockup-width, and mobile sizes.
-- `design-qa.md` was added on 2026-06-11 with `final result: passed`.
-- Install CTAs were prepared on 2026-06-11 to switch from local install fallback to the Chrome Web Store URL after publish.
-- Temporary local install instructions were removed from the public landing page on 2026-06-11.
-- Privacy policy content was reviewed against Chrome Web Store privacy guidance on 2026-06-11 and expanded to cover local website-content handling, limited use, transfer, retention, and permission scope.
-- `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-11 after the SPA navigation injection fix.
-- `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-11 after the Remove button copy update.
-- `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-11 after the toolbar end-spacing update.
-- Logo/icon PNGs were re-generated from `assets/logo-variants/progress-sort-ring-transparent.png` on 2026-06-11 and verified with alpha channels.
-- Project memory metadata was repaired on 2026-06-17.
-- Top-level `docs/*.md` files were made trackable in git on 2026-06-17 while `docs/superpowers/` remains ignored by default.
-- Local project-memory repair was committed on 2026-06-17 as `e55854c`.
-- `gh auth status` on 2026-06-17 reported the active `liewcf` GitHub token is invalid, blocking repo creation and push.
-- GitHub CLI auth was restored on 2026-06-17.
 - Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
 - GitHub Pages was enabled with GitHub Actions on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/`.
 - Public privacy policy URL returned HTTP 200 on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
@@ -74,6 +41,7 @@ related:
 - Local manifest parse check passed on 2026-06-17 after the `Watched first` toggle update.
 - `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-17 after the `Watched first` toggle update.
 - User manually confirmed on 2026-06-17 that the reloaded extension works with the `Watched first` / `Normal order` toggle on YouTube Watch Later.
+- Metadata repair check passed on 2026-06-17 with all four main memory docs unchanged.
 
 ## Blockers
 
@@ -98,3 +66,28 @@ related:
 - [x] Repair project memory metadata and docs tracking rules.
 - [x] Push repository to GitHub.
 - [x] Enable GitHub Pages with GitHub Actions.
+
+## Historical Verification Archive
+
+- Confirmed the project folder was empty and not a git repository before setup.
+- Initialized a local git repository on 2026-06-11.
+- Local `node tests/run-tests.js` passed through the 2026-06-11 helper changes: 8, 10, 11, then 12 tests passing.
+- Local manifest parse check passed on 2026-06-11.
+- `dist/youtube-watchlist-manager.zip` listing was verified on 2026-06-11 and contained 9 files.
+- Generated logo variants were visually inspected and saved under `assets/logo-variants/` on 2026-06-11.
+- `progress-sort-ring-transparent.png` was exported to the Chrome icon sizes on 2026-06-11.
+- Chrome Web Store audit on 2026-06-11 found no runtime `fetch`, `chrome.*`, storage, cookies, tokens, eval, or private YouTube API strings.
+- Manifest content-script matches were broadened to YouTube pages on 2026-06-11 so Watch Later SPA navigation works without refresh.
+- `dist/youtube-watchlist-manager.zip` was rebuilt on 2026-06-11 with `manifest.json` at the ZIP root and only runtime files.
+- Chrome Web Store listing, privacy, and reviewer notes drafts were added on 2026-06-11.
+- Store screenshot `assets/store/screenshot-watch-later-toolbar.png` was created at `1280x800`.
+- Store small promotional image `assets/store/promo-small.png` was generated and resized to `440x280`.
+- GitHub Pages landing page and privacy page were rebuilt from the selected Product Design reference on 2026-06-11.
+- Browser QA passed on 2026-06-11 for the landing page and privacy page at desktop, mockup-width, and mobile sizes.
+- `design-qa.md` was added on 2026-06-11 with `final result: passed`.
+- Privacy policy content was reviewed against Chrome Web Store privacy guidance on 2026-06-11 and expanded to cover local website-content handling, limited use, transfer, retention, and permission scope.
+- Logo/icon PNGs were re-generated from `assets/logo-variants/progress-sort-ring-transparent.png` on 2026-06-11 and verified with alpha channels.
+- Project memory metadata was repaired on 2026-06-17.
+- Top-level `docs/*.md` files were made trackable in git on 2026-06-17 while `docs/superpowers/` remains ignored by default.
+- Local project-memory repair was committed on 2026-06-17 as `e55854c`.
+- `gh auth status` on 2026-06-17 reported the active `liewcf` GitHub token was invalid, blocking repo creation and push until GitHub CLI auth was restored.

@@ -23,6 +23,8 @@ related:
 
 ## 2026-06-17
 
+- Repaired `docs/TASKS.md` scanability by keeping active verification near the top and moving older setup, package, asset, and publishing checks into `Historical Verification Archive`.
+- Ran the project-memory metadata repair checker; all four main memory docs were already valid and unchanged.
 - Changed the `Watched first` toolbar action into a toggle that switches to `Normal order`, clears the visual sort on the second click, and exposes `aria-pressed` while active.
 - Added active button styling for the watched-first mode.
 - Added a helper regression test for the `Watched first` / `Normal order` label.
