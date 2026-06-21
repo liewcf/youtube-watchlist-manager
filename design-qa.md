@@ -22,4 +22,4 @@ final result: passed
 ## Notes
 
 - Intentional variation: the demo uses the real store screenshot thumbnails and matching titles instead of the sample video titles shown in the generated reference image.
-- P3 follow-up: after Chrome Web Store approval, paste the live listing URL into `chromeWebStoreUrl` in `site/script.js`.
+- P3 follow-up (done): Chrome Web Store URL has been added to `chromeWebStoreUrl` in `site/script.js`. Live at https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn

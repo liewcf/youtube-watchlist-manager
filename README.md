@@ -8,6 +8,8 @@ Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-f
 
 This is a small Chrome Manifest V3 extension for people whose Watch Later list is easy to fill but hard to clean. It adds simple controls directly to the visible Watch Later page, without using YouTube APIs or storing account data.
 
+**[Install from Chrome Web Store →](https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn)**
+
 ## Preview
 
 ![Watch Later Manager toolbar selecting videos on the YouTube Watch Later page](assets/store/screenshot-watch-later-toolbar.png)
@@ -110,7 +112,7 @@ Public site:
 - Landing page: `https://liewcf.github.io/youtube-watchlist-manager/`
 - Privacy policy: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`
 
-After Chrome Web Store publish, paste the extension listing URL into `chromeWebStoreUrl` in `site/script.js`. The main install buttons will then link to the Store listing.
+The extension is published on the Chrome Web Store: [Watch Later Manager for YouTube](https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn). The `chromeWebStoreUrl` in `site/script.js` is set to the live listing URL.
 
 ## Trademark
 

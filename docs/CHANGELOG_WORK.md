@@ -21,6 +21,15 @@ related:
 
 # Work Changelog
 
+## 2026-06-21
+
+- Extension was published and is live on the Chrome Web Store: https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn
+- Set `chromeWebStoreUrl` in `site/script.js` to the live listing URL.
+- Added Chrome Web Store install link to `README.md`.
+- Updated `docs/WEB_STORE_READINESS.md` status to published with the live URL.
+- Updated `design-qa.md` P3 follow-up note to mark the store URL as done.
+- Updated `docs/TASKS.md` to mark the store URL task as complete.
+
 ## 2026-06-17
 
 - Repaired `docs/TASKS.md` scanability by keeping active verification near the top and moving older setup, package, asset, and publishing checks into `Historical Verification Archive`.
@@ -31,6 +40,8 @@ related:
 - Refreshed `dist/youtube-watchlist-manager.zip` after the toolbar toggle update.
 - Verified `node tests/run-tests.js` and manifest JSON parsing after the toolbar toggle update.
 - User manually confirmed the reloaded extension works with the `Watched first` / `Normal order` toggle on YouTube Watch Later.
+- User manually confirmed `Remove` works on one disposable selected item and infinite scroll still works after removal.
+- User filled the Chrome Web Store listing, privacy, and reviewer fields, then submitted the draft for review.
 - Repaired project memory metadata by adding Project Memory Metadata v1 frontmatter to the four main memory files.
 - Repaired `.gitignore` so top-level `docs/*.md` project memory and publish-readiness docs can be tracked while copied `docs/superpowers/` files stay ignored by default.
 - Committed the project-memory repair as `e55854c`.

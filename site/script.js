@@ -1,4 +1,4 @@
-const chromeWebStoreUrl = '';
+const chromeWebStoreUrl = 'https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn';
 const pendingStoreTitle = 'Chrome Web Store link will be added after publish';
 const demoList = document.querySelector('[data-demo-list]');
 const countTargets = Array.from(document.querySelectorAll('[data-demo-count]'));

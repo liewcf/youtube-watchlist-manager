@@ -2,7 +2,9 @@
 
 ## Current Status
 
-The source, package, and listing assets are close to publish-ready. Before submitting, confirm `Remove` on one disposable selected item and infinite scroll after removal if that was not already covered in manual retest.
+The source, package, listing assets, public privacy policy, and manual Watch Later retest were ready for Chrome Web Store submission. The draft was submitted for review on 2026-06-17.
+
+The extension was published and is live on the Chrome Web Store: https://chromewebstore.google.com/detail/watch-later-manager-for-y/jleceiefdnhnjifpebbnlgjbmhijnmpn
 
 ## Package
 

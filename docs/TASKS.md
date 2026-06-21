@@ -22,14 +22,11 @@ related:
 
 ## Recommended Next Action
 
-- Use `docs/WEB_STORE_READINESS.md` to fill the Chrome Web Store listing and upload `dist/youtube-watchlist-manager.zip`.
+- No pending actions. The extension is live on the Chrome Web Store.
 
 ## Current
 
-- [ ] Confirm `Remove` on one disposable selected item and infinite scroll after removal if not already confirmed in manual retest.
-- [ ] Add `https://liewcf.github.io/youtube-watchlist-manager/privacy.html` in the Chrome Web Store Developer Dashboard.
-- [ ] After Chrome Web Store publish, paste the listing URL into `chromeWebStoreUrl` in `site/script.js`.
-- [ ] Use `docs/WEB_STORE_READINESS.md` to fill Store listing, privacy, and reviewer test instruction fields.
+- No current tasks.
 
 ## Verification
 
@@ -41,6 +38,8 @@ related:
 - Local manifest parse check passed on 2026-06-17 after the `Watched first` toggle update.
 - `dist/youtube-watchlist-manager.zip` was refreshed on 2026-06-17 after the `Watched first` toggle update.
 - User manually confirmed on 2026-06-17 that the reloaded extension works with the `Watched first` / `Normal order` toggle on YouTube Watch Later.
+- User manually confirmed on 2026-06-17 that `Remove` works on one disposable selected item and infinite scroll still works after removal.
+- User submitted the Chrome Web Store draft for review on 2026-06-17.
 - Metadata repair check passed on 2026-06-17 with all four main memory docs unchanged.
 
 ## Blockers
@@ -61,11 +60,17 @@ related:
 - [x] Add Chrome Web Store readiness notes, privacy policy draft, and repeatable package script.
 - [x] Load unpacked extension and retest visible Watch Later UI in Chrome.
 - [x] Confirm `Watched first` changes to `Normal order`, then restores normal visible order on the second click.
+- [x] Confirm `Remove` on one disposable selected item and infinite scroll after removal.
 - [x] Capture Chrome Web Store screenshot from the real Watch Later page.
 - [x] Initialize local git repository.
 - [x] Repair project memory metadata and docs tracking rules.
 - [x] Push repository to GitHub.
 - [x] Enable GitHub Pages with GitHub Actions.
+- [x] Add the public privacy policy URL in the Chrome Web Store Developer Dashboard.
+- [x] Fill Store listing, privacy, and reviewer test instruction fields.
+- [x] Submit the Chrome Web Store draft for review.
+- [x] Paste the live Chrome Web Store listing URL into `chromeWebStoreUrl` in `site/script.js`.
+- [x] Update README.md, docs, and landing page with the published Chrome Web Store URL.
 
 ## Historical Verification Archive
 

@@ -24,7 +24,7 @@ related:
 
 - Project purpose: Chrome extension to manage YouTube Watch Later from the visible page, without using the YouTube API.
 - Primary users: The extension owner testing and managing their own YouTube Watch Later list in Chrome.
-- Current status: Migrated extension source, tests, docs, packaged zip, Chrome Web Store assets, public GitHub repo, and GitHub Pages site are present. The extension was renamed to `Watch Later Manager for YouTube(TM)` for Chrome Web Store trademark clarity. Current manifest version is `0.1.4`. A local git repository was initialized on 2026-06-11 and pushed to GitHub on 2026-06-17. Local Node tests, manifest parse, package integrity, package root layout, and icon dimensions were verified on 2026-06-11.
+- Current status: Migrated extension source, tests, docs, packaged zip, Chrome Web Store assets, public GitHub repo, and GitHub Pages site are present. The extension was renamed to `Watch Later Manager for YouTube(TM)` for Chrome Web Store trademark clarity. Current manifest version is `0.1.4`. A local git repository was initialized on 2026-06-11 and pushed to GitHub on 2026-06-17. The Chrome Web Store draft was submitted for review on 2026-06-17. Local Node tests, manifest parse, package integrity, package root layout, and icon dimensions were verified on 2026-06-17.
 
 ## Project Structure
 
