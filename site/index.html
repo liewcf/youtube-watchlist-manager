@@ -5,29 +5,36 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Watch Later Manager for YouTube</title>
     <meta name="description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
+    <meta name="robots" content="index, follow">
     <meta property="og:title" content="Watch Later Manager for YouTube">
     <meta property="og:description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="assets/promo-small.png">
+    <meta property="og:url" content="https://liewcf.github.io/youtube-watchlist-manager/">
+    <meta property="og:image" content="https://liewcf.github.io/youtube-watchlist-manager/assets/promo-small.png">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Watch Later Manager for YouTube">
     <meta name="twitter:description" content="Clean up YouTube Watch Later faster with checkboxes, batch remove, and watched-first sorting.">
-    <meta name="twitter:image" content="assets/promo-small.png">
+    <meta name="twitter:image" content="https://liewcf.github.io/youtube-watchlist-manager/assets/promo-small.png">
     <link rel="icon" href="assets/icon-128.png">
+    <link rel="canonical" href="https://liewcf.github.io/youtube-watchlist-manager/">
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="index.html" aria-label="Watch Later Manager for YouTube home">
-        <img src="assets/logo-variants/progress-sort-ring-transparent.png" alt="" width="40" height="40">
+        <picture>
+          <source srcset="assets/logo.webp" type="image/webp">
+          <img src="assets/logo.png" alt="" width="40" height="40" decoding="async">
+        </picture>
         <span>
           <strong>Watch Later Manager</strong>
           <small>for YouTube</small>
         </span>
       </a>
-      <nav class="nav" aria-label="Primary navigation">
+      <nav class="nav" aria-label="Primary">
         <a href="#features">Features</a>
         <a href="#how-it-works">How it works</a>
         <a href="#privacy">Privacy</a>
@@ -36,7 +43,7 @@
       <a class="header-cta" href="#" data-store-link data-fallback-href="#">Install Extension</a>
     </header>
 
-    <main>
+    <main id="main" tabindex="-1">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
           <h1 id="hero-title">Watch Later Manager for YouTube</h1>
@@ -61,7 +68,10 @@
           <div class="demo-list" data-demo-list>
             <article class="demo-row is-selected">
               <label class="row-check"><input type="checkbox" checked aria-label="Select Aircraft Carrier Crews"></label>
-              <img src="assets/thumbs/thumb-1.png" alt="">
+              <picture>
+                <source srcset="assets/thumbs/thumb-1.webp" type="image/webp">
+                <img src="assets/thumbs/thumb-1.png" alt="" width="264" height="148" loading="lazy" decoding="async">
+              </picture>
               <div class="row-text">
                 <h3>How Aircraft Carrier Crews EAT, SHOWER &amp; SLEEP</h3>
                 <p>The Daily Navy · 11M views · 2 months ago</p>
@@ -71,7 +81,10 @@
             </article>
             <article class="demo-row is-selected">
               <label class="row-check"><input type="checkbox" checked aria-label="Select Hidden Under Antarctica"></label>
-              <img src="assets/thumbs/thumb-2.png" alt="">
+              <picture>
+                <source srcset="assets/thumbs/thumb-2.webp" type="image/webp">
+                <img src="assets/thumbs/thumb-2.png" alt="" width="264" height="148" loading="lazy" decoding="async">
+              </picture>
               <div class="row-text">
                 <h3>What's Hidden Under Antarctica?</h3>
                 <p>Cleo Abram · 6.4M views · 1 month ago</p>
@@ -81,7 +94,10 @@
             </article>
             <article class="demo-row is-selected">
               <label class="row-check"><input type="checkbox" checked aria-label="Select Living in the Faroe Islands"></label>
-              <img src="assets/thumbs/thumb-3.png" alt="">
+              <picture>
+                <source srcset="assets/thumbs/thumb-3.webp" type="image/webp">
+                <img src="assets/thumbs/thumb-3.png" alt="" width="264" height="148" loading="lazy" decoding="async">
+              </picture>
               <div class="row-text">
                 <h3>Living in the Faroe Islands | How People Live at the End of the World</h3>
                 <p>Planet Journal · 2.6M views · 4 weeks ago</p>
@@ -91,7 +107,10 @@
             </article>
             <article class="demo-row">
               <label class="row-check"><input type="checkbox" aria-label="Select Why Super Glue Is Perfect For Gluing Skin"></label>
-              <img src="assets/thumbs/thumb-4.png" alt="">
+              <picture>
+                <source srcset="assets/thumbs/thumb-4.webp" type="image/webp">
+                <img src="assets/thumbs/thumb-4.png" alt="" width="264" height="148" loading="lazy" decoding="async">
+              </picture>
               <div class="row-text">
                 <h3>Why Super Glue Is Perfect For Gluing Skin</h3>
                 <p>Veritasium · 16M views · 1 year ago</p>
@@ -101,7 +120,10 @@
             </article>
             <article class="demo-row">
               <label class="row-check"><input type="checkbox" aria-label="Select Ridiculous Engineering of Jet Engines"></label>
-              <img src="assets/thumbs/thumb-5.png" alt="">
+              <picture>
+                <source srcset="assets/thumbs/thumb-5.webp" type="image/webp">
+                <img src="assets/thumbs/thumb-5.png" alt="" width="264" height="148" loading="lazy" decoding="async">
+              </picture>
               <div class="row-text">
                 <h3>The Ridiculous Engineering of Jet Engines</h3>
                 <p>Veritasium · 13M views · 6 months ago</p>
@@ -224,7 +246,10 @@
     <footer class="footer">
       <div class="section-inner footer-grid">
         <div class="footer-brand">
-          <img src="assets/logo-variants/progress-sort-ring-transparent.png" alt="" width="40" height="40">
+          <picture>
+            <source srcset="assets/logo.webp" type="image/webp">
+            <img src="assets/logo.png" alt="" width="40" height="40" decoding="async">
+          </picture>
           <div>
             <strong>Watch Later Manager</strong>
             <span>for YouTube</span>

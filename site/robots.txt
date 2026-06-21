@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://liewcf.github.io/youtube-watchlist-manager/sitemap.xml

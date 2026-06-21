@@ -8,6 +8,10 @@ design-qa.md
 # Build output
 dist/
 
+# Local tooling output
+.playwright-cli/
+.firecrawl/
+
 # Project memory
 docs/*.md
 !docs/PRIVACY_POLICY.md

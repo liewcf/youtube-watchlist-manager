@@ -25,6 +25,8 @@
 
 html {
   scroll-behavior: smooth;
+  /* Offset in-page anchor jumps so the sticky header doesn't cover the target. */
+  scroll-padding-top: 80px;
 }
 
 body {
@@ -54,6 +56,43 @@ img {
 
 a {
   color: inherit;
+}
+
+/* Skip link: visually hidden until focused by keyboard */
+.skip-link {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  padding: 12px 18px;
+  color: #fff;
+  background: var(--blue);
+  border-radius: 0 0 8px 0;
+  font-weight: 700;
+  text-decoration: none;
+  transform: translateY(-120%);
+  transition: transform 150ms ease;
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
+
+/* Skip-link target: move focus here without a full-width outline box.
+   The content below exposes its own focus indicators on interactive elements. */
+#main:focus {
+  outline: none;
+}
+
+/* Visible focus indicator for all interactive controls */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+summary:focus-visible,
+.brand:focus-visible {
+  outline: 3px solid var(--blue-2);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 button,
@@ -340,10 +379,11 @@ h1 {
 }
 
 .row-check input {
-  width: 18px;
-  height: 18px;
+  width: 24px;
+  height: 24px;
   margin: 0;
   accent-color: var(--blue);
+  cursor: pointer;
 }
 
 .demo-list {
@@ -856,5 +896,21 @@ details p {
 
   .privacy-panel ul {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Respect reduced-motion preference: disable non-essential animation */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }
