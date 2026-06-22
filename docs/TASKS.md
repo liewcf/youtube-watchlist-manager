@@ -22,7 +22,7 @@ related:
 
 ## Recommended Next Action
 
-- No pending actions. The extension is live on the Chrome Web Store.
+- No pending actions. The interface polish pass is complete.
 
 ## Current
 
@@ -30,7 +30,8 @@ related:
 
 ## Verification
 
-- Landing-page SEO/a11y/perf pass verified locally on 2026-06-22: `index.html`, `privacy.html`, `404.html`, `robots.txt`, `sitemap.xml`, `styles.css`, `script.js`, and all referenced image assets (`logo.png`, `logo.webp`, `thumbs/thumb-{1..5}.webp`, `icon-128.png`, `promo-small.png`) returned HTTP 200 on a `0.0.0.0:8765` test server.
+- Interface polish pass verified locally on 2026-06-22: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` contains `src/content.css`.
+- Site and toolbar controls now use 40px minimum height; press feedback uses `scale(0.96)`; mobile swipe cue is present in `site/index.html`.
 - Confirmed in served HTML on 2026-06-22: `og:url` present on `index.html`; `aria-label="Primary"` and `tabindex="-1"` on `<main>` across `index.html`, `privacy.html`, `404.html`; `scroll-padding-top` and `#main:focus` present in `styles.css`; no `Primary navigation` label remains.
 - Current manifest version is `0.1.4`.
 - Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
@@ -77,6 +78,7 @@ related:
 - [x] Update README.md, docs, and landing page with the published Chrome Web Store URL.
 - [x] Clean up repo for public visibility: add MIT LICENSE, update .gitignore, untrack internal files (AGENTS.md, design-qa.md, dist/, internal docs).
 - [x] Landing-page SEO/accessibility/performance pass: canonical/robots/og:url/sitemap/robots.txt, WebP `<picture>` with PNG fallback, skip-link + focus-visible + reduced-motion + scroll-padding, branded 404 page.
+- [x] Interface polish pass: 40px touch targets, press feedback, mobile swipe cue, heading text-wrap, thumbnail outlines, source-contract test, rebuilt extension ZIP.
 
 ## Historical Verification Archive
 

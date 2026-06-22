@@ -23,6 +23,14 @@ related:
 
 ## 2026-06-22
 
+Interface polish pass (uncommitted):
+- `site/styles.css`: added `-webkit-font-smoothing: antialiased` on `body`; `text-wrap: balance` on `h1`/`h2`; `text-wrap: pretty` on `p`; `:active` press feedback with `scale(0.96)` on `.header-cta`/`.button`/`.demo-small`/`.demo-danger`; raised demo control `min-height` to 40px; added transition on demo controls; added thumbnail `outline`; added hidden `.demo-swipe-cue` base rule and visible `display: flex` inside `@media (max-width: 680px)`; removed `min-height: 32px` from the `@media (max-width: 1100px)` demo-control override.
+- `site/index.html`: added `<p class="demo-swipe-cue">` below the demo panel inside the hero section.
+- `src/content.css`: raised `.ytwm-button` `min-height` to 40px; added `transition` and `:active` press feedback with `scale(0.96)`.
+- `tests/dom-logic.test.js`: added source-contract test `interface polish keeps public and extension controls easy to use` covering all new style contracts.
+- `dist/youtube-watchlist-manager.zip`: rebuilt with the updated `src/content.css`.
+- Verified: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. ZIP contains `src/content.css`.
+
 Landing-page SEO, accessibility, and performance pass (uncommitted):
 - `site/index.html`: added `og:url`, `canonical`, `robots`, absolute `og:image`/`twitter:image`; converted logo and demo thumbnails to `<picture>` with WebP + PNG fallback, explicit dimensions, `loading="lazy"`/`decoding="async"`; added skip-to-main link, `aria-label="Primary"`, `tabindex="-1"` on `<main>`.
 - `site/privacy.html`: added `robots`, `og:*`, `canonical`; same `<picture>`/skip-link/`tabindex`/`aria-label` treatment.

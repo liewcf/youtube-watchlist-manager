@@ -29,6 +29,8 @@ related:
 - Use `aria-label="Primary"` (not `Primary navigation`) and `tabindex="-1"` on the `<main>` skip-link target. Rationale: including the role name in the label reads as "Primary navigation navigation"; a focusable skip target is needed so focus actually moves in Safari.
 - Add `scroll-padding-top: 80px` on `html` and suppress the outline on `#main:focus`. Rationale: the sticky header overlapped in-page anchor targets; the skip target does not need a full-width outline box because content below exposes its own focus indicators.
 - Keep demo thumbnails on `loading="lazy"`. Rationale: the LCP element is the `<h1>` text, not an image, and on mobile the demo panel sits below the fold, so lazy loading does not harm LCP.
+- Add a mobile swipe cue below the demo panel instead of compressing demo rows on narrow screens. Rationale: the demo layout uses a fixed minimum width to stay readable; a cue tells visitors they can swipe horizontally without shrinking rows below a usable size.
+- Use 40px minimum height on site demo controls and extension toolbar buttons. Rationale: 40px matches common touch-target guidance and keeps controls easy to tap on touch screens without changing labels or layout.
 
 ## 2026-06-17
 

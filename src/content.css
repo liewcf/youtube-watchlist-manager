@@ -23,7 +23,7 @@
 }
 
 .ytwm-button {
-  min-height: 32px;
+  min-height: 40px;
   padding: 0 12px;
   color: #f1f1f1;
   background: #303030;
@@ -31,10 +31,15 @@
   border-radius: 6px;
   cursor: pointer;
   font: inherit;
+  transition: transform 140ms ease, background 140ms ease;
 }
 
 .ytwm-button:hover {
   background: #3f3f3f;
+}
+
+.ytwm-button:active {
+  transform: scale(0.96);
 }
 
 .ytwm-button-active {

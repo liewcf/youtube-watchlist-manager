@@ -147,3 +147,20 @@ test('scrollPageToTop jumps the page to the top-left corner', () => {
   assert.equal(fakeWindow.document.documentElement.scrollTop, 0);
   assert.equal(fakeWindow.document.body.scrollTop, 0);
 });
+
+test('interface polish keeps public and extension controls easy to use', () => {
+  const siteStyles = fs.readFileSync(path.join(__dirname, '../site/styles.css'), 'utf8');
+  const sitePage = fs.readFileSync(path.join(__dirname, '../site/index.html'), 'utf8');
+  const toolbarStyles = fs.readFileSync(path.join(__dirname, '../src/content.css'), 'utf8');
+
+  assert.match(siteStyles, /-webkit-font-smoothing:\s*antialiased/i);
+  assert.match(siteStyles, /h1,\s*h2\s*\{[^}]*text-wrap:\s*balance/i);
+  assert.match(siteStyles, /\.demo-small,[\s\S]*?\.demo-danger\s*\{[^}]*min-height:\s*40px/i);
+  assert.match(siteStyles, /\.demo-row img\s*\{[^}]*outline:\s*1px solid rgba\(255, 255, 255, 0\.1\)/i);
+  assert.match(siteStyles, /\.demo-swipe-cue\s*\{[^}]*display:\s*none/i);
+  assert.match(siteStyles, /@media \(max-width: 680px\)[\s\S]*?\.demo-swipe-cue\s*\{[^}]*display:\s*flex/i);
+  assert.match(siteStyles, /\.button:active[\s\S]*?scale\(0\.96\)/i);
+  assert.match(sitePage, /<p class="demo-swipe-cue">/);
+  assert.match(toolbarStyles, /\.ytwm-button\s*\{[^}]*min-height:\s*40px/i);
+  assert.match(toolbarStyles, /\.ytwm-button:active\s*\{[^}]*scale\(0\.96\)/i);
+});
