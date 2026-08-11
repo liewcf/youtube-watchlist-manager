@@ -23,7 +23,7 @@ related:
 
 ## 2026-06-22
 
-Interface polish pass (uncommitted):
+Interface polish pass (committed as `89079d8` and pushed):
 - `site/styles.css`: added `-webkit-font-smoothing: antialiased` on `body`; `text-wrap: balance` on `h1`/`h2`; `text-wrap: pretty` on `p`; `:active` press feedback with `scale(0.96)` on `.header-cta`/`.button`/`.demo-small`/`.demo-danger`; raised demo control `min-height` to 40px; added transition on demo controls; added thumbnail `outline`; added hidden `.demo-swipe-cue` base rule and visible `display: flex` inside `@media (max-width: 680px)`; removed `min-height: 32px` from the `@media (max-width: 1100px)` demo-control override.
 - `site/index.html`: added `<p class="demo-swipe-cue">` below the demo panel inside the hero section.
 - `src/content.css`: raised `.ytwm-button` `min-height` to 40px; added `transition` and `:active` press feedback with `scale(0.96)`.
