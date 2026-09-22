@@ -114,6 +114,7 @@
       buildWatchedVisualOrderPlan,
       buildTransformSortPlan,
       parseProgressPercent,
+      readWatchProgressPercent,
       scrollPageToTop,
       getSortWatchedButtonLabel
     };
@@ -172,13 +173,14 @@
 
   function hasWatchedText(row) {
     const text = row.textContent || '';
-    return /\bwatched\b/i.test(text);
+    return /\bwatched/i.test(text);
   }
 
   function readWatchProgressPercent(row) {
     const progressSelectors = [
       '.ytThumbnailOverlayProgressBarHostWatchedProgressBarSegment',
       'ytd-thumbnail-overlay-resume-playback-renderer #progress',
+      'ytw-thumbnail-overlay-resume-playback-renderer div[style]',
       '#progress'
     ];
 

@@ -11,9 +11,27 @@ const {
   buildWatchedVisualOrderPlan,
   buildTransformSortPlan,
   parseProgressPercent,
+  readWatchProgressPercent,
   scrollPageToTop,
   getSortWatchedButtonLabel
 } = require('../src/content.js');
+
+function makeRow({ textContent = '', progressStyle = null } = {}) {
+  return {
+    textContent,
+    querySelector(selector) {
+      if (progressStyle !== null && selector === 'ytw-thumbnail-overlay-resume-playback-renderer div[style]') {
+        return {
+          getAttribute: () => progressStyle,
+          getBoundingClientRect: () => ({ width: 42 }),
+          parentElement: { getBoundingClientRect: () => ({ width: 100 }) }
+        };
+      }
+
+      return null;
+    }
+  };
+}
 
 test('isWatchLaterUrl only accepts YouTube Watch Later playlist URLs', () => {
   assert.equal(isWatchLaterUrl('https://www.youtube.com/playlist?list=WL'), true);
@@ -103,6 +121,18 @@ test('parseProgressPercent reads inline width percentages', () => {
   assert.equal(parseProgressPercent('width: 150%;'), 100);
   assert.equal(parseProgressPercent('width: -10%;'), null);
   assert.equal(parseProgressPercent('height: 100%;'), null);
+});
+
+test('readWatchProgressPercent reads the renamed resume playback progress bar', () => {
+  assert.equal(readWatchProgressPercent(makeRow({ progressStyle: 'width: 42%;' })), 42);
+});
+
+test('readWatchProgressPercent treats glued WATCHED badge as fully watched', () => {
+  assert.equal(readWatchProgressPercent(makeRow({ textContent: 'WATCHED19:51 How I Built This' })), 100);
+});
+
+test('readWatchProgressPercent returns null for unwatched rows', () => {
+  assert.equal(readWatchProgressPercent(makeRow({ textContent: '26:20 Now playing' })), null);
 });
 
 test('buildWatchedVisualOrderPlan sorts higher progress before lower progress', () => {
