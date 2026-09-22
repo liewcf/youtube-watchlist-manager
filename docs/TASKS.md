@@ -22,16 +22,16 @@ related:
 
 ## Recommended Next Action
 
-- Manual browser test of the watched-first fix (required by `AGENTS.md`): reload the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — Watched first moves progress/watched rows to the top, the toggle back works, plus select all/clear, Remove batch, infinite scroll, and no toolbar on other YouTube pages.
-- Upload `dist/youtube-watchlist-manager.zip` (v0.1.6) to the Chrome Web Store after the manual test passes, so the watched-first fix ships.
+- Upload `dist/youtube-watchlist-manager.zip` (v0.1.6) to the Chrome Web Store so the watched-first fix ships to live users.
 
 ## Current
 
-- `Watched first` regression fixed on 2026-09-22: YouTube renamed the resume-playback overlay (`ytw-thumbnail-overlay-resume-playback-renderer`, no `#progress` id) and glues the badge as `WATCHED19:51`; the perf commits were investigated and ruled out. Awaiting the manual extension test.
+- `Watched first` regression fixed on 2026-09-22: YouTube renamed the resume-playback overlay (`ytw-thumbnail-overlay-resume-playback-renderer`, no `#progress` id) and glues the badge as `WATCHED19:51`; the perf commits were investigated and ruled out. Manual browser test passed the same day. Remaining step: upload the 0.1.6 ZIP to the Chrome Web Store.
 
 ## Verification
 
 - Watched-first fix verified locally on 2026-09-22: `node tests/run-tests.js` passed with 18 tests, 0 failures (three new `readWatchProgressPercent` regression tests). Manifest JSON parses at `0.1.6`; `dist/youtube-watchlist-manager.zip` rebuilt with manifest 0.1.6.
+- User manually confirmed on 2026-09-22 that the reloaded extension's `Watched first` works again on the Watch Later page.
 - Performance pass verified locally on 2026-09-22: `node tests/run-tests.js` passed with 15 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` rebuilt with the updated `src/content.js`.
 - Playwright visual check on 2026-09-22 (served at `localhost:4173`): all inline SVG icons render on `index.html` (23 icons) and `privacy.html` (5 icons); no broken `<use>` refs; only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
 - Removed ~1.8 MB of unreferenced images from `site/assets/`; remaining files are all referenced (`icon-128.png`, `logo.png`, `logo.webp`, `promo-small.png`, `thumbs/`).
@@ -90,6 +90,7 @@ related:
 - [x] Interface polish pass: 40px touch targets, press feedback, mobile swipe cue, heading text-wrap, thumbnail outlines, source-contract test, rebuilt extension ZIP.
 - [x] Performance audit (`docs/PERFORMANCE_AUDIT.md`): inline SVG icons replacing the render-blocking icon font, CSP cleanup, delete ~1.8 MB unreferenced site assets, filter MutationObserver + single-scan toolbar updates + sort read dedupe, add `isRelevantMutation` test, rebuild ZIP.
 - [x] Fix the `Watched first` regression: support the renamed `ytw-thumbnail-overlay-resume-playback-renderer` progress bar and the glued `WATCHED19:51` badge; add regression tests; bump to 0.1.6; rebuild ZIP.
+- [x] Manual browser test of the watched-first fix (required by `AGENTS.md`): user confirmed on 2026-09-22 that the reloaded extension sorts watched/progress rows to the top on `https://www.youtube.com/playlist?list=WL`.
 
 ## Historical Verification Archive
 

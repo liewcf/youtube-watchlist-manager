@@ -30,7 +30,8 @@ Watched-first regression diagnosis and fix (reported after the performance work;
 - `tests/dom-logic.test.js`: added three `readWatchProgressPercent` tests (renamed progress bar reads 42, glued `WATCHED` badge reads 100, unwatched row reads null); 18 tests total.
 - `dist/youtube-watchlist-manager.zip`: rebuilt with the 0.1.6 manifest.
 - Verified: `node tests/run-tests.js` 18/18 pass; manifest JSON parses; ZIP manifest reports 0.1.6.
-- Pending: manual unpacked-extension test of `Watched first` after reloading the extension (per `AGENTS.md`).
+- User manually confirmed on 2026-09-22 that the reloaded extension's `Watched first` works again on the Watch Later page ("it works").
+- Remaining: upload the 0.1.6 ZIP to the Chrome Web Store.
 
 Performance audit and fixes (full report in `docs/PERFORMANCE_AUDIT.md`):
 - `docs/PERFORMANCE_AUDIT.md`: new audit report. Baseline: PageSpeed mobile 95, FCP 2.4 s, CLS 0, TBT 0 ms, 11 requests / 237 KB, render-blocking savings estimate 1,730 ms.
