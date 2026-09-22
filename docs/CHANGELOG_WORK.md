@@ -34,6 +34,8 @@ Performance audit and fixes (full report in `docs/PERFORMANCE_AUDIT.md`):
 - Verified: `node tests/run-tests.js` 15/15 pass; manifest JSON parses; every `<use>` ref resolves on served pages; Playwright visual check on `localhost:4173` shows all icons rendering on `index.html` (23) and `privacy.html` (5) with correct sizes/fills — only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
 - Pending: manual unpacked-extension test on the Watch Later page (per `AGENTS.md`); re-run PageSpeed after the Pages deploy.
 - Bumped the manifest version to `0.1.5` for the Chrome Web Store upload of the content-script fixes; ZIP rebuilt with the new manifest.
+- Pushed `main` (commits `e46dd2b`, `66680df`, `f3a9b24`, `5018128`); GitHub Pages deploy succeeded (run 35690869539, 22 s).
+- Post-deploy PageSpeed mobile: score 98 (was 95), FCP/LCP 0.8 s (was 2.4 s), TBT 0 ms, CLS 0, 9 requests / 58 KB (was 11 / 237 KB), zero third-party requests; render-blocking estimate 1,730 ms → 420 ms (remaining is same-origin `styles.css`).
 
 ## 2026-06-22
 

@@ -60,5 +60,19 @@ Baseline: PageSpeed Insights mobile on the live site scored **95**, FCP 2.4 s, C
 ## Verification
 
 - `node tests/run-tests.js` passes (15 tests, including a new `isRelevantMutation` contract test).
-- Extension changes need manual browser testing per `AGENTS.md`: load unpacked, open `https://www.youtube.com/playlist?list=WL`, test select/sort/remove/infinite scroll, and confirm no toolbar appears on other YouTube pages.
-- Re-run PageSpeed on the live site after the Pages deploy to confirm the FCP improvement.
+Extension changes need manual browser testing per `AGENTS.md`: load unpacked, open `https://www.youtube.com/playlist?list=WL`, test select/sort/remove/infinite scroll, and confirm no toolbar appears on other YouTube pages.
+
+## Results after fixes (2026-09-22, live site)
+
+PageSpeed mobile re-run after the Pages deploy:
+
+| Metric | Before | After |
+|---|---|---|
+| Performance score | 95 | **98** |
+| FCP | 2.4 s | **0.8 s** |
+| LCP | 2.4 s | **0.8 s** |
+| TBT / CLS | 0 ms / 0 | 0 ms / 0 |
+| Requests | 11 | 9 |
+| Total bytes | 237 KB | 58 KB |
+| Third-party requests | remixicon.css + woff2 | none |
+| Render-blocking estimate | 1,730 ms | 420 ms (same-origin `styles.css`) |

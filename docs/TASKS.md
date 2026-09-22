@@ -23,7 +23,6 @@ related:
 ## Recommended Next Action
 
 - Manual browser test of the content-script changes (required by `AGENTS.md`): load the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — select all/clear, Watched first toggle, Remove batch, infinite scroll, and confirm no toolbar appears on other YouTube pages.
-- After pushing to `main`, re-run PageSpeed Insights on the live site to confirm the render-blocking fix (baseline: mobile 95, FCP 2.4 s, est. 1,730 ms render-blocking savings).
 - Upload `dist/youtube-watchlist-manager.zip` (v0.1.5) to the Chrome Web Store after the manual test passes, so the content-script fixes ship.
 
 ## Current
@@ -35,6 +34,9 @@ related:
 - Performance pass verified locally on 2026-09-22: `node tests/run-tests.js` passed with 15 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` rebuilt with the updated `src/content.js`.
 - Playwright visual check on 2026-09-22 (served at `localhost:4173`): all inline SVG icons render on `index.html` (23 icons) and `privacy.html` (5 icons); no broken `<use>` refs; only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
 - Removed ~1.8 MB of unreferenced images from `site/assets/`; remaining files are all referenced (`icon-128.png`, `logo.png`, `logo.webp`, `promo-small.png`, `thumbs/`).
+- Pushed as `e46dd2b`, `66680df`, `f3a9b24`, `5018128`; GitHub Pages deploy succeeded (run 35690869539) on 2026-09-22.
+- Post-deploy PageSpeed (mobile) on 2026-09-22: score **98** (was 95), FCP **0.8 s** (was 2.4 s), LCP 0.8 s, TBT 0 ms, CLS 0, 9 requests / 58 KB (was 11 / 237 KB), zero third-party requests. Render-blocking estimate dropped from 1,730 ms to 420 ms (now only the same-origin `styles.css`).
+- Live-site checks on 2026-09-22: no `remixicon`/`jsdelivr` references, 23 `<use>` icons on `index.html`, `privacy.html` returns 200, deleted asset returns 404.
 
 - Interface polish pass verified locally on 2026-06-22: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` contains `src/content.css`.
 - Site and toolbar controls now use 40px minimum height; press feedback uses `scale(0.96)`; mobile swipe cue is present in `site/index.html`.
