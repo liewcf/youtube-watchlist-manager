@@ -33,6 +33,7 @@ Performance audit and fixes (full report in `docs/PERFORMANCE_AUDIT.md`):
 - `dist/youtube-watchlist-manager.zip`: rebuilt with the updated `src/content.js`.
 - Verified: `node tests/run-tests.js` 15/15 pass; manifest JSON parses; every `<use>` ref resolves on served pages; Playwright visual check on `localhost:4173` shows all icons rendering on `index.html` (23) and `privacy.html` (5) with correct sizes/fills — only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
 - Pending: manual unpacked-extension test on the Watch Later page (per `AGENTS.md`); re-run PageSpeed after the Pages deploy.
+- Bumped the manifest version to `0.1.5` for the Chrome Web Store upload of the content-script fixes; ZIP rebuilt with the new manifest.
 
 ## 2026-06-22
 

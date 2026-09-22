@@ -24,6 +24,7 @@ related:
 
 - Manual browser test of the content-script changes (required by `AGENTS.md`): load the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — select all/clear, Watched first toggle, Remove batch, infinite scroll, and confirm no toolbar appears on other YouTube pages.
 - After pushing to `main`, re-run PageSpeed Insights on the live site to confirm the render-blocking fix (baseline: mobile 95, FCP 2.4 s, est. 1,730 ms render-blocking savings).
+- Upload `dist/youtube-watchlist-manager.zip` (v0.1.5) to the Chrome Web Store after the manual test passes, so the content-script fixes ship.
 
 ## Current
 
@@ -38,7 +39,7 @@ related:
 - Interface polish pass verified locally on 2026-06-22: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` contains `src/content.css`.
 - Site and toolbar controls now use 40px minimum height; press feedback uses `scale(0.96)`; mobile swipe cue is present in `site/index.html`.
 - Confirmed in served HTML on 2026-06-22: `og:url` present on `index.html`; `aria-label="Primary"` and `tabindex="-1"` on `<main>` across `index.html`, `privacy.html`, `404.html`; `scroll-padding-top` and `#main:focus` present in `styles.css`; no `Primary navigation` label remains.
-- Current manifest version is `0.1.4`.
+- Current manifest version is `0.1.5`.
 - Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
 - GitHub Pages was enabled with GitHub Actions on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/`.
 - Public privacy policy URL returned HTTP 200 on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
