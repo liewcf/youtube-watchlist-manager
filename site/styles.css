@@ -55,6 +55,16 @@ img {
   max-width: 100%;
 }
 
+/* Inline SVG icons (Remix Icon sources, inlined to drop the render-blocking CDN font) */
+svg[class^="ri-"] {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+}
+
 a {
   color: inherit;
 }
@@ -293,7 +303,7 @@ h1 {
   min-height: 56px;
 }
 
-.button i {
+.button svg {
   font-size: 27px;
 }
 
@@ -306,7 +316,7 @@ h1 {
   line-height: 1.45;
 }
 
-.trust-note i {
+.trust-note svg {
   color: #c8d4e2;
   font-size: 19px;
 }
@@ -503,7 +513,7 @@ p {
   padding: 8px 20px;
 }
 
-.pain-grid i {
+.pain-grid svg {
   display: block;
   margin-bottom: 22px;
   color: var(--blue);
@@ -623,8 +633,8 @@ p {
   gap: 10px;
 }
 
-.privacy-panel li i,
-.policy-list i {
+.privacy-panel li svg,
+.policy-list svg {
   color: var(--blue);
   font-size: 18px;
   line-height: 1;

@@ -13,12 +13,13 @@
     <meta property="og:image" content="https://liewcf.github.io/youtube-watchlist-manager/assets/promo-small.png">
     <link rel="icon" href="assets/icon-128.png">
     <link rel="canonical" href="https://liewcf.github.io/youtube-watchlist-manager/privacy.html">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net; font-src https://cdn.jsdelivr.net; img-src 'self' data:; frame-ancestors 'none';">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" integrity="sha384-hlyh3bZtgya52o/xl1sa3jb1Hv8UW8lsNRB1mlJM26/nlx1S1J7zVBZMOjkKl+MU" crossorigin="anonymous">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; frame-ancestors 'none';">
     <link rel="stylesheet" href="styles.css">
   </head>
   <body class="policy-page">
+    <svg style="position:absolute;width:0;height:0" aria-hidden="true">
+      <symbol id="ri-check-line" viewBox="0 0 24 24"><path d="M9.9997 15.1709L19.1921 5.97852L20.6063 7.39273L9.9997 17.9993L3.63574 11.6354L5.04996 10.2212L9.9997 15.1709Z"/></symbol>
+    </svg>
     <a class="skip-link" href="#main">Skip to main content</a>
     <header class="site-header" aria-label="Site header">
       <a class="brand" href="index.html" aria-label="Watch Later Manager for YouTube home">
@@ -70,11 +71,11 @@
 
         <h2>What the extension does not use</h2>
         <ul class="policy-list">
-          <li><i class="ri-check-line" aria-hidden="true"></i>No YouTube API calls</li>
-          <li><i class="ri-check-line" aria-hidden="true"></i>No private YouTube requests</li>
-          <li><i class="ri-check-line" aria-hidden="true"></i>No cookies, tokens, or account credentials</li>
-          <li><i class="ri-check-line" aria-hidden="true"></i>No analytics, ads, or external servers</li>
-          <li><i class="ri-check-line" aria-hidden="true"></i>No remote code</li>
+          <li><svg class="ri-check-line" aria-hidden="true"><use href="#ri-check-line"></use></svg>No YouTube API calls</li>
+          <li><svg class="ri-check-line" aria-hidden="true"><use href="#ri-check-line"></use></svg>No private YouTube requests</li>
+          <li><svg class="ri-check-line" aria-hidden="true"><use href="#ri-check-line"></use></svg>No cookies, tokens, or account credentials</li>
+          <li><svg class="ri-check-line" aria-hidden="true"><use href="#ri-check-line"></use></svg>No analytics, ads, or external servers</li>
+          <li><svg class="ri-check-line" aria-hidden="true"><use href="#ri-check-line"></use></svg>No remote code</li>
         </ul>
 
         <h2>Data sharing</h2>
