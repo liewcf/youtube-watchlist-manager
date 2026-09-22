@@ -23,6 +23,15 @@ related:
 
 ## 2026-09-22
 
+Watched-first regression diagnosis and fix (reported after the performance work; root cause was YouTube markup drift, not the perf commits):
+- Live diagnosis in the user's Chrome (console probes on `https://www.youtube.com/playlist?list=WL`): rows are still `ytd-playlist-video-renderer` (100), toolbar, enabled button, and checkboxes all fine; the sort handler ran (label flipped to `Normal order`, `z-index: 100` applied) but computed `translateY = 0` for all rows because every row read as unwatched — progress selectors matched nothing and `WATCHED19:51` failed the old `\bwatched\b` regex.
+- `src/content.js`: added fourth progress selector `ytw-thumbnail-overlay-resume-playback-renderer div[style]` (YouTube renamed `ytd-thumbnail-overlay-resume-playback-renderer` to the `ytw-` tag and removed the `#progress` id; the fill div keeps an inline `width: NN%`, so both the style parse and the rectangle-ratio fallback work); relaxed `hasWatchedText` from `/\bwatched\b/i` to `/\bwatched/i` (the watched badge now renders glued to the duration, `WATCHED19:51`, so the trailing word boundary never matches; leading `\b` kept); exported `readWatchProgressPercent`.
+- `manifest.json`: version `0.1.6`.
+- `tests/dom-logic.test.js`: added three `readWatchProgressPercent` tests (renamed progress bar reads 42, glued `WATCHED` badge reads 100, unwatched row reads null); 18 tests total.
+- `dist/youtube-watchlist-manager.zip`: rebuilt with the 0.1.6 manifest.
+- Verified: `node tests/run-tests.js` 18/18 pass; manifest JSON parses; ZIP manifest reports 0.1.6.
+- Pending: manual unpacked-extension test of `Watched first` after reloading the extension (per `AGENTS.md`).
+
 Performance audit and fixes (full report in `docs/PERFORMANCE_AUDIT.md`):
 - `docs/PERFORMANCE_AUDIT.md`: new audit report. Baseline: PageSpeed mobile 95, FCP 2.4 s, CLS 0, TBT 0 ms, 11 requests / 237 KB, render-blocking savings estimate 1,730 ms.
 - `site/index.html`, `site/privacy.html`, `site/404.html`: removed the render-blocking Remix Icon CDN stylesheet and `preconnect`; replaced all `<i class="ri-*">` glyphs with inline SVG (`<symbol>` sprite + `<use>`, official Remix Icon 4.3.0 sources — 23 icons in `index.html`, 5 in `privacy.html`); dropped `https://cdn.jsdelivr.net` from each page CSP.

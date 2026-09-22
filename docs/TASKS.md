@@ -22,15 +22,16 @@ related:
 
 ## Recommended Next Action
 
-- Manual browser test of the content-script changes (required by `AGENTS.md`): load the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — select all/clear, Watched first toggle, Remove batch, infinite scroll, and confirm no toolbar appears on other YouTube pages.
-- Upload `dist/youtube-watchlist-manager.zip` (v0.1.5) to the Chrome Web Store after the manual test passes, so the content-script fixes ship.
+- Manual browser test of the watched-first fix (required by `AGENTS.md`): reload the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — Watched first moves progress/watched rows to the top, the toggle back works, plus select all/clear, Remove batch, infinite scroll, and no toolbar on other YouTube pages.
+- Upload `dist/youtube-watchlist-manager.zip` (v0.1.6) to the Chrome Web Store after the manual test passes, so the watched-first fix ships.
 
 ## Current
 
-- Performance audit fixes applied on 2026-09-22; report saved to `docs/PERFORMANCE_AUDIT.md`. Awaiting the manual extension test and a post-deploy PageSpeed re-run.
+- `Watched first` regression fixed on 2026-09-22: YouTube renamed the resume-playback overlay (`ytw-thumbnail-overlay-resume-playback-renderer`, no `#progress` id) and glues the badge as `WATCHED19:51`; the perf commits were investigated and ruled out. Awaiting the manual extension test.
 
 ## Verification
 
+- Watched-first fix verified locally on 2026-09-22: `node tests/run-tests.js` passed with 18 tests, 0 failures (three new `readWatchProgressPercent` regression tests). Manifest JSON parses at `0.1.6`; `dist/youtube-watchlist-manager.zip` rebuilt with manifest 0.1.6.
 - Performance pass verified locally on 2026-09-22: `node tests/run-tests.js` passed with 15 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` rebuilt with the updated `src/content.js`.
 - Playwright visual check on 2026-09-22 (served at `localhost:4173`): all inline SVG icons render on `index.html` (23 icons) and `privacy.html` (5 icons); no broken `<use>` refs; only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
 - Removed ~1.8 MB of unreferenced images from `site/assets/`; remaining files are all referenced (`icon-128.png`, `logo.png`, `logo.webp`, `promo-small.png`, `thumbs/`).
@@ -41,7 +42,7 @@ related:
 - Interface polish pass verified locally on 2026-06-22: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` contains `src/content.css`.
 - Site and toolbar controls now use 40px minimum height; press feedback uses `scale(0.96)`; mobile swipe cue is present in `site/index.html`.
 - Confirmed in served HTML on 2026-06-22: `og:url` present on `index.html`; `aria-label="Primary"` and `tabindex="-1"` on `<main>` across `index.html`, `privacy.html`, `404.html`; `scroll-padding-top` and `#main:focus` present in `styles.css`; no `Primary navigation` label remains.
-- Current manifest version is `0.1.5`.
+- Current manifest version is `0.1.6`.
 - Public GitHub repo was created and `main` was pushed on 2026-06-17: `https://github.com/liewcf/youtube-watchlist-manager`.
 - GitHub Pages was enabled with GitHub Actions on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/`.
 - Public privacy policy URL returned HTTP 200 on 2026-06-17: `https://liewcf.github.io/youtube-watchlist-manager/privacy.html`.
@@ -88,6 +89,7 @@ related:
 - [x] Landing-page SEO/accessibility/performance pass: canonical/robots/og:url/sitemap/robots.txt, WebP `<picture>` with PNG fallback, skip-link + focus-visible + reduced-motion + scroll-padding, branded 404 page.
 - [x] Interface polish pass: 40px touch targets, press feedback, mobile swipe cue, heading text-wrap, thumbnail outlines, source-contract test, rebuilt extension ZIP.
 - [x] Performance audit (`docs/PERFORMANCE_AUDIT.md`): inline SVG icons replacing the render-blocking icon font, CSP cleanup, delete ~1.8 MB unreferenced site assets, filter MutationObserver + single-scan toolbar updates + sort read dedupe, add `isRelevantMutation` test, rebuild ZIP.
+- [x] Fix the `Watched first` regression: support the renamed `ytw-thumbnail-overlay-resume-playback-renderer` progress bar and the glued `WATCHED19:51` badge; add regression tests; bump to 0.1.6; rebuild ZIP.
 
 ## Historical Verification Archive
 
