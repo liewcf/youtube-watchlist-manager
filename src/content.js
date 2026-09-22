@@ -109,6 +109,7 @@
   if (typeof module !== 'undefined' && module.exports) {
     module.exports = {
       isWatchLaterUrl,
+      isRelevantMutation,
       buildWatchedSortGroups,
       buildWatchedVisualOrderPlan,
       buildTransformSortPlan,
@@ -126,6 +127,28 @@
   let scheduled = false;
   let busy = false;
   let visualSortActive = false;
+
+  function containsVideoRow(node) {
+    if (node.nodeType !== 1) return false;
+
+    return node.matches(VIDEO_ROW_SELECTOR) || Boolean(node.querySelector(VIDEO_ROW_SELECTOR));
+  }
+
+  function isRelevantMutation(mutation) {
+    const { target, addedNodes, removedNodes } = mutation;
+
+    if (target && target.nodeType === 1 && typeof target.closest === 'function' && target.closest(VIDEO_ROW_SELECTOR)) {
+      return true;
+    }
+
+    for (const nodes of [addedNodes, removedNodes]) {
+      for (const node of nodes) {
+        if (containsVideoRow(node)) return true;
+      }
+    }
+
+    return false;
+  }
 
   function getCurrentRows() {
     return Array.from(document.querySelectorAll(VIDEO_ROW_SELECTOR))
@@ -145,10 +168,6 @@
     const title = titleLink?.textContent?.trim();
 
     return title || 'video';
-  }
-
-  function hasWatchedProgress(row) {
-    return readWatchProgressPercent(row) !== null || hasWatchedText(row);
   }
 
   function hasWatchedText(row) {
@@ -190,12 +209,18 @@
     }
   }
 
-  function updateToolbarState() {
+  function updateToolbarState(rows) {
     const toolbar = document.getElementById(TOOLBAR_ID);
     if (!toolbar) return;
 
-    const selectedCount = getSelectedRows().length;
-    const allRows = getCurrentRows();
+    const allRows = rows || getCurrentRows();
+    let selectedCount = 0;
+
+    allRows.forEach((row) => {
+      const checkbox = row.querySelector(`.${CHECKBOX_CLASS}`);
+      if (checkbox && checkbox.checked) selectedCount += 1;
+    });
+
     const countText = selectedCount === 1 ? '1 selected' : `${selectedCount} selected`;
 
     toolbar.querySelector('[data-ytwm-action="clear"]').disabled = selectedCount === 0 || busy;
@@ -269,7 +294,7 @@
     checkbox.type = 'checkbox';
     checkbox.className = CHECKBOX_CLASS;
     checkbox.setAttribute('aria-label', picker.title);
-    checkbox.addEventListener('change', updateToolbarState);
+    checkbox.addEventListener('change', () => updateToolbarState());
 
     picker.append(checkbox);
     row.prepend(picker);
@@ -283,8 +308,9 @@
     }
 
     ensureToolbar();
-    getCurrentRows().forEach(enhanceRow);
-    updateToolbarState();
+    const rows = getCurrentRows();
+    rows.forEach(enhanceRow);
+    updateToolbarState(rows);
   }
 
   function scheduleEnhance() {
@@ -298,19 +324,21 @@
   }
 
   function selectAllRows() {
-    getCurrentRows().forEach((row) => {
+    const rows = getCurrentRows();
+    rows.forEach((row) => {
       const checkbox = row.querySelector(`.${CHECKBOX_CLASS}`);
       if (checkbox) checkbox.checked = true;
     });
-    updateToolbarState();
+    updateToolbarState(rows);
   }
 
   function clearSelection() {
-    getCurrentRows().forEach((row) => {
+    const rows = getCurrentRows();
+    rows.forEach((row) => {
       const checkbox = row.querySelector(`.${CHECKBOX_CLASS}`);
       if (checkbox) checkbox.checked = false;
     });
-    updateToolbarState();
+    updateToolbarState(rows);
   }
 
   function toggleWatchedSort() {
@@ -336,7 +364,7 @@
         top: rect.top,
         height: rect.height,
         progressPercent,
-        watched: progressPercent !== null || hasWatchedProgress(element)
+        watched: progressPercent !== null
       };
     });
     const watchedCount = rows.filter((row) => row.watched).length;
@@ -366,7 +394,7 @@
     setStatus(`${progressCount || watchedCount} rows sorted by progress`);
     visualSortActive = true;
     scrollPageToTop(globalObject);
-    updateToolbarState();
+    updateToolbarState(rows.map((row) => row.element));
   }
 
   function clearVisualSort() {
@@ -472,7 +500,10 @@
   function start() {
     enhancePage();
 
-    const observer = new MutationObserver(scheduleEnhance);
+    const observer = new MutationObserver((mutations) => {
+      if (!isWatchLaterUrl(globalObject.location.href)) return;
+      if (mutations.some(isRelevantMutation)) scheduleEnhance();
+    });
     observer.observe(document.documentElement, {
       childList: true,
       subtree: true

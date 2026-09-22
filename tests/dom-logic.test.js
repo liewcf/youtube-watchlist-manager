@@ -6,6 +6,7 @@ const manifest = require('../manifest.json');
 
 const {
   isWatchLaterUrl,
+  isRelevantMutation,
   buildWatchedSortGroups,
   buildWatchedVisualOrderPlan,
   buildTransformSortPlan,
@@ -26,6 +27,21 @@ test('manifest injects on YouTube pages so SPA navigation can show the toolbar',
 
   assert.ok(contentScript.matches.includes('https://www.youtube.com/*'));
   assert.ok(contentScript.matches.includes('https://youtube.com/*'));
+});
+
+test('isRelevantMutation only reacts to playlist row mutations', () => {
+  const row = { nodeType: 1, matches: (selector) => selector === 'ytd-playlist-video-renderer', querySelector: () => null };
+  const plain = () => ({ nodeType: 1, matches: () => false, querySelector: () => null });
+
+  assert.equal(isRelevantMutation({ target: plain(), addedNodes: [row], removedNodes: [] }), true);
+  assert.equal(isRelevantMutation({ target: plain(), addedNodes: [], removedNodes: [row] }), true);
+  assert.equal(isRelevantMutation({ target: plain(), addedNodes: [{ nodeType: 3 }], removedNodes: [] }), false);
+  assert.equal(isRelevantMutation({ target: plain(), addedNodes: [plain()], removedNodes: [] }), false);
+  assert.equal(isRelevantMutation({
+    target: Object.assign(plain(), { closest: () => row }),
+    addedNodes: [],
+    removedNodes: []
+  }), true);
 });
 
 test('toolbar remove button uses concise copy beside the selected count', () => {
