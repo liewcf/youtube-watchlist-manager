@@ -4,7 +4,7 @@ description: Important project, product, technical, process, or content decision
 doc_type: decision_log
 status: active
 created: 2026-06-17
-updated: 2026-06-22
+updated: 2026-09-22
 tags:
   - project-memory
   - decisions
@@ -19,6 +19,15 @@ related:
 ---
 
 # Decisions
+
+## 2026-09-22
+
+- Replace the Remix Icon CDN font with inline SVG `<symbol>` sprites on all site pages. Rationale: Lighthouse flagged render-blocking requests with an estimated 1,730 ms savings and the site uses only 12 icons; inline SVG removes the CDN stylesheet and font file from the critical path and lets the CSP drop jsdelivr entirely.
+- Delete `site/assets/brand-mark.png`, `site/assets/screenshot-watch-later-toolbar.png`, and `site/assets/logo-variants/`. Rationale: no site file references them; the store/README copies live under root `assets/`, which is not deployed (~1.8 MB of dead deploy weight). Git history keeps them recoverable.
+- Filter MutationObserver callbacks by URL and row relevance (`isRelevantMutation`). Rationale: the observer previously scheduled a full rescan pass on every YouTube DOM mutation — even on non-Watch-Later pages, and even for the script's own toolbar text updates, which caused a rescan loop — when only Watch Later row changes need action.
+- Count selection in a single row scan per pass instead of up to three scans. Rationale: `enhancePage` and `updateToolbarState` each re-queried all rows; one scan per pass is enough and scales better on long lists.
+- Treat `watched` as `progressPercent !== null` and drop `hasWatchedProgress`. Rationale: the helper re-read progress selectors and full row text per row during sort, but `readWatchProgressPercent` already falls back to the watched-text check, so it could never change the result.
+- Leave the menu polling (100 ms, max 2.5 s) and the fixed 500 ms per-removal wait unchanged. Rationale: both are bounded and user-triggered; scoping the menu query risks missing YouTube menu variants, and removal speed is inherent to driving the visible UI without the API.
 
 ## 2026-06-22
 

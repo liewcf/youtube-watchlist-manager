@@ -4,7 +4,7 @@ description: Current tasks, blockers, verification state, and recommended next a
 doc_type: task_state
 status: active
 created: 2026-06-17
-updated: 2026-06-22
+updated: 2026-09-22
 tags:
   - project-memory
   - tasks
@@ -22,13 +22,18 @@ related:
 
 ## Recommended Next Action
 
-- No pending actions. The interface polish pass is complete.
+- Manual browser test of the content-script changes (required by `AGENTS.md`): load the unpacked extension in Chrome and test `https://www.youtube.com/playlist?list=WL` — select all/clear, Watched first toggle, Remove batch, infinite scroll, and confirm no toolbar appears on other YouTube pages.
+- After pushing to `main`, re-run PageSpeed Insights on the live site to confirm the render-blocking fix (baseline: mobile 95, FCP 2.4 s, est. 1,730 ms render-blocking savings).
 
 ## Current
 
-- No current tasks.
+- Performance audit fixes applied on 2026-09-22; report saved to `docs/PERFORMANCE_AUDIT.md`. Awaiting the manual extension test and a post-deploy PageSpeed re-run.
 
 ## Verification
+
+- Performance pass verified locally on 2026-09-22: `node tests/run-tests.js` passed with 15 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` rebuilt with the updated `src/content.js`.
+- Playwright visual check on 2026-09-22 (served at `localhost:4173`): all inline SVG icons render on `index.html` (23 icons) and `privacy.html` (5 icons); no broken `<use>` refs; only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
+- Removed ~1.8 MB of unreferenced images from `site/assets/`; remaining files are all referenced (`icon-128.png`, `logo.png`, `logo.webp`, `promo-small.png`, `thumbs/`).
 
 - Interface polish pass verified locally on 2026-06-22: `node tests/run-tests.js` passed with 14 tests, 0 failures. Manifest JSON parses. `dist/youtube-watchlist-manager.zip` contains `src/content.css`.
 - Site and toolbar controls now use 40px minimum height; press feedback uses `scale(0.96)`; mobile swipe cue is present in `site/index.html`.
@@ -79,6 +84,7 @@ related:
 - [x] Clean up repo for public visibility: add MIT LICENSE, update .gitignore, untrack internal files (AGENTS.md, design-qa.md, dist/, internal docs).
 - [x] Landing-page SEO/accessibility/performance pass: canonical/robots/og:url/sitemap/robots.txt, WebP `<picture>` with PNG fallback, skip-link + focus-visible + reduced-motion + scroll-padding, branded 404 page.
 - [x] Interface polish pass: 40px touch targets, press feedback, mobile swipe cue, heading text-wrap, thumbnail outlines, source-contract test, rebuilt extension ZIP.
+- [x] Performance audit (`docs/PERFORMANCE_AUDIT.md`): inline SVG icons replacing the render-blocking icon font, CSP cleanup, delete ~1.8 MB unreferenced site assets, filter MutationObserver + single-scan toolbar updates + sort read dedupe, add `isRelevantMutation` test, rebuild ZIP.
 
 ## Historical Verification Archive
 

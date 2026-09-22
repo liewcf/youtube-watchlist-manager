@@ -4,7 +4,7 @@ description: Stable project facts, structure, workflows, resources, and constrai
 doc_type: context
 status: stable
 created: 2026-06-17
-updated: 2026-06-22
+updated: 2026-09-22
 tags:
   - project-memory
   - context
@@ -24,7 +24,7 @@ related:
 
 - Project purpose: Chrome extension to manage YouTube Watch Later from the visible page, without using the YouTube API.
 - Primary users: The extension owner testing and managing their own YouTube Watch Later list in Chrome.
-- Current status: Migrated extension source, tests, docs, packaged zip, Chrome Web Store assets, public GitHub repo, and GitHub Pages site are present. The extension was renamed to `Watch Later Manager for YouTube(TM)` for Chrome Web Store trademark clarity. Current manifest version is `0.1.4`. A local git repository was initialized on 2026-06-11 and pushed to GitHub on 2026-06-17. The Chrome Web Store draft was submitted for review on 2026-06-17 and the extension was published and is live on the Chrome Web Store as of 2026-06-21. Local Node tests, manifest parse, package integrity, package root layout, and icon dimensions were verified on 2026-06-17. Interface polish pass completed on 2026-06-22: site and toolbar controls now use 40px minimum height, press feedback, and a mobile swipe cue.
+- Current status: Migrated extension source, tests, docs, packaged zip, Chrome Web Store assets, public GitHub repo, and GitHub Pages site are present. The extension was renamed to `Watch Later Manager for YouTube(TM)` for Chrome Web Store trademark clarity. Current manifest version is `0.1.4`. A local git repository was initialized on 2026-06-11 and pushed to GitHub on 2026-06-17. The Chrome Web Store draft was submitted for review on 2026-06-17 and the extension was published and is live on the Chrome Web Store as of 2026-06-21. Local Node tests, manifest parse, package integrity, package root layout, and icon dimensions were verified on 2026-06-17. Interface polish pass completed on 2026-06-22: site and toolbar controls now use 40px minimum height, press feedback, and a mobile swipe cue. Performance audit completed on 2026-09-22 with fixes applied (inline SVG icons, MutationObserver filtering, single-scan toolbar updates, dead assets removed); see `docs/PERFORMANCE_AUDIT.md`.
 
 ## Project Structure
 
@@ -35,7 +35,7 @@ related:
 - `src/content.css`: toolbar, checkbox, and visual-sort styles.
 - `assets/logo-variants/`: generated logo concept PNGs, including `progress-sort-ring-transparent.png`.
 - `assets/store/`: Chrome Web Store screenshot and small promotional image assets.
-- `site/`: static GitHub Pages landing page, privacy policy page, CSS, script, and page assets.
+- `site/`: static GitHub Pages landing page, privacy policy page, CSS, script, and page assets. Icons are inline SVG symbols (official Remix Icon 4.3.0 sources) — no external font or CDN requests.
 - `design-qa.md`: Product Design QA report for the landing page rebuild.
 - `.github/workflows/pages.yml`: GitHub Pages deployment workflow for the `site/` folder.
 - `icons/`: Chrome extension icons exported from `assets/logo-variants/progress-sort-ring-transparent.png`.
@@ -50,6 +50,7 @@ related:
 - `docs/DECISIONS.md`: dated decisions and rationale.
 - `docs/TASKS.md`: current tasks, blockers, verification state, and next actions.
 - `docs/CHANGELOG_WORK.md`: dated work notes.
+- `docs/PERFORMANCE_AUDIT.md`: performance audit of the extension and site with applied fixes and verification notes.
 - `docs/superpowers/specs/`: copied design spec from the original thread.
 - `docs/superpowers/plans/`: copied implementation plan from the original thread.
 
@@ -84,6 +85,7 @@ related:
 
 ## UI Rules
 
+- Site icons use inline SVG `<symbol>` sprites referenced with `<use>`; do not reintroduce icon fonts or CDN stylesheets (the CSP no longer allows external styles/fonts).
 - Site controls (`.demo-small`, `.demo-danger`) and extension toolbar controls (`.ytwm-button`) use a 40px minimum height for touch-friendly hit areas.
 - Site press feedback uses `scale(0.96)` on `:active` and respects the existing `prefers-reduced-motion` media query.
 - The mobile demo panel remains horizontally scrollable on purpose; a swipe cue (`Swipe to preview the demo`) appears below the demo on narrow screens instead of compressing the rows.

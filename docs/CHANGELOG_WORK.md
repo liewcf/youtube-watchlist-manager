@@ -4,7 +4,7 @@ description: Dated notes on changed files, deliverables, tooling, checks, and ve
 doc_type: work_log
 status: active
 created: 2026-06-17
-updated: 2026-06-22
+updated: 2026-09-22
 tags:
   - project-memory
   - changelog
@@ -20,6 +20,19 @@ related:
 ---
 
 # Work Changelog
+
+## 2026-09-22
+
+Performance audit and fixes (full report in `docs/PERFORMANCE_AUDIT.md`):
+- `docs/PERFORMANCE_AUDIT.md`: new audit report. Baseline: PageSpeed mobile 95, FCP 2.4 s, CLS 0, TBT 0 ms, 11 requests / 237 KB, render-blocking savings estimate 1,730 ms.
+- `site/index.html`, `site/privacy.html`, `site/404.html`: removed the render-blocking Remix Icon CDN stylesheet and `preconnect`; replaced all `<i class="ri-*">` glyphs with inline SVG (`<symbol>` sprite + `<use>`, official Remix Icon 4.3.0 sources — 23 icons in `index.html`, 5 in `privacy.html`); dropped `https://cdn.jsdelivr.net` from each page CSP.
+- `site/styles.css`: added base rule for `svg[class^="ri-"]` (1em sizing, `fill: currentColor`, `flex-shrink: 0`); switched `.button i`, `.trust-note i`, `.pain-grid i`, `.privacy-panel li i`, `.policy-list i` selectors to `svg`.
+- `site/assets/`: deleted unreferenced deployed images `brand-mark.png` (644 KB), `screenshot-watch-later-toolbar.png` (472 KB), and `logo-variants/` (644 KB) — ~1.8 MB removed from the Pages deploy.
+- `src/content.js`: MutationObserver callback now returns immediately on non-Watch-Later URLs and only schedules a rescan when `isRelevantMutation` finds a mutation adding, removing, or touching a playlist row (fixes constant rescans on all YouTube pages and a rescan loop caused by the script's own toolbar text updates); one row scan per pass via `updateToolbarState(rows)` (was up to three); sort sets `watched: progressPercent !== null` and the dead `hasWatchedProgress` helper was removed (it could never add information beyond `readWatchProgressPercent`'s own watched-text fallback); checkbox `change` listener wrapped so the Event is not passed as rows; `isRelevantMutation` exported.
+- `tests/dom-logic.test.js`: added `isRelevantMutation` contract test; 15 tests total.
+- `dist/youtube-watchlist-manager.zip`: rebuilt with the updated `src/content.js`.
+- Verified: `node tests/run-tests.js` 15/15 pass; manifest JSON parses; every `<use>` ref resolves on served pages; Playwright visual check on `localhost:4173` shows all icons rendering on `index.html` (23) and `privacy.html` (5) with correct sizes/fills — only zero-size icon is the intentionally hidden mobile swipe cue; only console notice is the pre-existing `frame-ancestors`-in-meta warning.
+- Pending: manual unpacked-extension test on the Watch Later page (per `AGENTS.md`); re-run PageSpeed after the Pages deploy.
 
 ## 2026-06-22
 
